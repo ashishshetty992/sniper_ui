@@ -1,0 +1,40 @@
+<div class="card">
+    <div class="header-custom text-white">
+        <h2>Create User</h2>
+    </div>
+    <div class="card-body">
+        <form id="create-user-form">
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="bi bi-bookmark"></i></span>
+                </div>
+                <input type="text" id="create-name" class="form-control" required placeholder="Rule Name">
+            </div>
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="bi bi-card-checklist"></i></span>
+                </div>
+                <input type="text" id="create-rule" class="form-control" required placeholder="Executale Rule">
+            </div>
+            <div class="form-group">
+                <label for="create-profile-agents">
+                    Agents:
+                </label>
+                <select id="create-profile-agents" class="form-control" multiple="multiple">
+                    <!-- Agents will be populated here using JavaScript -->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="create-profile-agents">
+                    Profiles:
+                </label>
+                <select id="create-profile" class="form-control" multiple="multiple">
+                    <!-- Agents will be populated here using JavaScript -->
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">
+                <i class="fas fa-user-plus"></i> Add Rule
+            </button>
+        </form>
+    </div>
+</div>

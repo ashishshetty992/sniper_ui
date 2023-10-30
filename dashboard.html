@@ -1,0 +1,220 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+</head>
+<body>
+    <table id="rulesTable" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Exec Rule</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Table content will be generated dynamically -->
+        </tbody>
+    </table>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+</body>
+<script>$(document).ready(function () {
+    var table = $('#rulesTable').DataTable({
+        ajax: {
+            url: 'http://0.0.0.0:8001/get_rules_with_agents_and_profile/?skip=0&limit=10',
+            dataSrc: ''
+        },
+        columns: [
+            { data: 'id' },
+            { data: 'name' },
+            { data: 'exec_rule' },
+            {
+                data: null,
+                render: function (data, type, row) {
+                    // var expandAgentsButton = '<button class="expand-agents-button">Expand Agents</button>';
+                    var expandAgentsButton = '<button class="btn-sm btn-primary expand-agents-button">Agents</button>';
+                    var expandProfilesButton = '<button class="btn-sm btn-primary expand-profiles-button">Profiles</button>';
+                    return expandAgentsButton +'        '+ expandProfilesButton;
+                }
+            }
+        ]
+    });
+
+    $('#rulesTable tbody').on('click', 'button.expand-agents-button', function () {
+        var tr = $(this).closest('tr');
+        var row = table.row(tr);
+
+        if (row.child.isShown()) {
+            // This row is already open, close it
+            row.child.hide();
+            tr.removeClass('shown');
+        } else {
+            // Open this row to show agents
+            expandAgents(row, tr); // Pass 'row' to the function
+        }
+    });
+
+    $('#rulesTable tbody').on('click', 'button.expand-profiles-button', function () {
+        var tr = $(this).closest('tr');
+        var row = table.row(tr);
+
+        if (row.child.isShown()) {
+            // This row is already open, close it
+            row.child.hide();
+            tr.removeClass('shown');
+        } else {
+            // Open this row to show agent profiles
+            expandProfiles(row, tr); // Pass 'row' to the function
+        }
+    });
+
+    function expandAgents(row, tr) { // Accept 'row' as a parameter
+        // Create a nested table for agents
+        var agentsTable = '<table class="agents-table" cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">';
+        agentsTable += '<tr><th>Name</th><th>IP Address</th><th>Active</th></tr>';
+        
+        row.data().agents.forEach(function (agent) {
+            agentsTable += '<tr>';
+            agentsTable += '<td>' + agent.name + '</td>';
+            agentsTable += '<td>' + agent.ip_address + '</td>';
+            agentsTable += '<td>' + (agent.active ? 'Yes' : 'No') + '</td>';
+            agentsTable += '</tr>';
+        });
+        
+        agentsTable += '</table>';
+        
+        // Display the nested table
+        row.child(agentsTable).show();
+        tr.addClass('shown');
+    }
+
+    function expandProfiles(row, tr) { // Accept 'row' as a parameter
+        // Create a nested table for agent profiles
+        var profilesTable = '<table class="profiles-table" cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">';
+        profilesTable += '<tr><th>Name</th></tr>';
+        
+        row.data().agent_profiles.forEach(function (profile) {
+            profilesTable += '<tr>';
+            profilesTable += '<td>' + profile.name + '</td>';
+            profilesTable += '</tr>';
+        });
+        
+        profilesTable += '</table>';
+        
+        // Display the nested table
+        row.child(profilesTable).show();
+        tr.addClass('shown');
+    }
+});
+
+</script>
+<style>
+    /* Dark blue background for table header */
+    #rulesTable thead {
+        background-color: #1e325c;
+        color: white;
+    }
+
+    /* Hover effect */
+    #rulesTable tbody tr:hover {
+        background-color: #f2f2f2;
+    }
+
+    /* Add elevation */
+    #rulesTable {
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    #rulesTable td {
+        width: 0%;
+        text-align: center;
+    }
+
+    .check-box {
+    transform: scale(0.5);
+    }
+
+input[type="checkbox"] {
+    position: relative;
+    appearance: none;
+    width: 100px;
+    height: 50px;
+    background: #ccc;
+    border-radius: 50px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+input:checked[type="checkbox"] {
+    background: #7da6ff;
+}
+
+input[type="checkbox"]::after {
+    position: absolute;
+    content: "";
+    width: 50px;
+    height: 50px;
+    top: 0;
+    left: 0;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    transform: scale(1.1);
+    transition: 0.4s;
+}
+
+input:checked[type="checkbox"]::after {
+    left: 50%;
+}
+
+.btn-circle {
+  width: 45px;
+  height: 45px;
+  line-height: 45px;
+  text-align: center;
+  padding: 0;
+  border-radius: 50%;
+}
+
+.btn-circle i {
+  position: relative;
+  top: -1px;
+}
+
+.btn-circle-sm {
+  width: 35px;
+  height: 35px;
+  line-height: 35px;
+  font-size: 0.9rem;
+}
+
+.btn-circle-lg {
+  width: 55px;
+  height: 55px;
+  line-height: 55px;
+  font-size: 1.1rem;
+}
+
+.btn-circle-xl {
+  width: 70px;
+  height: 70px;
+  line-height: 70px;
+  font-size: 1.3rem;
+}
+
+.alert{
+  display:none;
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+}
+
+.ping-success {
+    background-color: #7da6ff !important;
+}
+
+</style>
+</html>

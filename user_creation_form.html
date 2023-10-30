@@ -1,0 +1,45 @@
+<div class="card">
+    <div class="header-custom text-white">
+        <h2>Create User</h2>
+    </div>
+    <div class="card-body">
+        <form id="create-user-form">
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="bi-person"></i></span>
+                </div>
+                <input type="text" id="create-username" class="form-control" required placeholder="Username">
+            </div>
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="bi-envelope"></i></span>
+                </div>
+                <input type="email" id="create-email" class="form-control" required placeholder="Email">
+            </div>
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="bi-person"></i></span>
+                </div>
+                <input type="text" id="create-fullname" class="form-control" required placeholder="Full Name">
+            </div>
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="bi-lock"></i></span>
+                </div>
+                <input type="password" id="create-password" class="form-control" required placeholder="Password">
+            </div>
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="bi-file-person"></i></span>
+                </div>
+                <select id="create-roles" name="role_ids" class="form-control" required>
+                    <option value="" disabled selected>Select Role</option>
+                    <!-- Role options will be populated here using JavaScript -->
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">
+                <i class="fas fa-user-plus"></i> Add User
+            </button>
+        </form>
+    </div>
+</div>
