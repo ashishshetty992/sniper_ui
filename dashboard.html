@@ -10,16 +10,24 @@
                 <th>Name</th>
                 <th>Exec Rule</th>
                 <th>Action</th>
+                <th>Schedule</th>
             </tr>
         </thead>
         <tbody>
             <!-- Table content will be generated dynamically -->
         </tbody>
     </table>
-
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <button type="button" class="close" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <p><i class="fa fa-check-circle"></i>We will set up the scheduler shortly.</p>
+    </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 </body>
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>$(document).ready(function () {
     var table = $('#rulesTable').DataTable({
         ajax: {
@@ -34,9 +42,15 @@
                 data: null,
                 render: function (data, type, row) {
                     // var expandAgentsButton = '<button class="expand-agents-button">Expand Agents</button>';
-                    var expandAgentsButton = '<button class="btn-sm btn-primary expand-agents-button">Agents</button>';
+                    var expandAgentsButton = '<button class="btn-sm btn-primary expand-agents-button" style="margin:5px;">Agents</button>';
                     var expandProfilesButton = '<button class="btn-sm btn-primary expand-profiles-button">Profiles</button>';
                     return expandAgentsButton +'        '+ expandProfilesButton;
+                }
+            },
+            {
+                data: 'id', // Assuming you have some unique identifier for scheduling
+                render: function (data) {
+                    return '<button class="btn-sm btn-primary schedule-btn" data-id="' + data + '"><i class="bi bi-calendar"></i>  Schedule</button>';
                 }
             }
         ]
@@ -107,6 +121,92 @@
         row.child(profilesTable).show();
         tr.addClass('shown');
     }
+
+
+    $('#rulesTable tbody').on('click', '.schedule-btn', function () {
+        var profileId = $(this).data('id');
+
+        // Create a modal with date, time, and scheduling options
+        var modalHtml = `
+            <div class="modal fade" id="scheduleModal" tabindex="-1" role="dialog" aria-labelledby="scheduleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="scheduleModalLabel">Schedule Task</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="date">Date</label>
+                                    <input type="date" class="form-control" id="date" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="time">Time</label>
+                                    <input type="time" class="form-control" id="time" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="scheduleOptions">Scheduling Options</label>
+                                    <select class="form-control" id="scheduleOptions">
+                                        <option value="daily">Once a Day</option>
+                                        <option value="weekly">Once a Week</option>
+                                        <option value="monthly">Once a Month</option>
+                                    </select>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary" id="saveSchedule">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        // Append the modal HTML to the body
+        $('body').append(modalHtml);
+
+        // Show the modal
+        $('#scheduleModal').modal('show');
+
+        // Handle modal close
+        $('#scheduleModal').on('hidden.bs.modal', function () {
+            $(this).remove(); // Remove the modal from the DOM
+        });
+
+        // Handle Save button click
+        $('#saveSchedule').on('click', function () {
+            // Retrieve the selected date, time, and scheduling option
+            var selectedDate = $('#date').val();
+            var selectedTime = $('#time').val();
+            var selectedOption = $('#scheduleOptions').val();
+
+
+            // Implement your scheduling logic here
+            // You can send this data to the server for scheduling or save it locally
+
+            if (!selectedDate) {
+                // Date is required, show an error message
+                $('.date-error').show();
+                return; // Exit the function, don't proceed
+            } else {
+                // Date is valid, hide the error message
+                $('.date-error').hide();
+            }
+            
+            $(".alert").show('medium');
+            setTimeout(function(){
+              $(".alert").hide('medium');
+            }, 5000);
+
+            // Close the modal
+            $('#scheduleModal').modal('hide');
+        });
+    });
+
 });
 
 </script>

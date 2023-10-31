@@ -159,6 +159,7 @@ function populateAgents() {
 }
 
 $(function () {
+
     // Show the user creation form when the button is clicked
     $("#create-user-button").on("click", function () {
         $("#user-creation-form").load("user_creation_form.html", function () {
@@ -256,6 +257,7 @@ $(function () {
                     success: function (data) {
                         $("#agent-creation-form, .overlay").hide();
                         alert("Agent created successfully!");
+                        location.reload();
                     },
                     error: function (xhr, status, error) {
                         alert("Agent creation failed. Please try again.");
@@ -358,5 +360,4 @@ $(function () {
         // Show the #rule-creation-form after loading
         $("#rule-creation-form, .overlay").show();
     });
-
 });

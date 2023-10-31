@@ -1,5 +1,9 @@
 <!-- agent_creation_form.html -->
-<div class="card">
+<div class="card card-agent">
+    <div class="row">
+        <div class="col-md-10"></div>
+        <button type="button" class="btn-sm btn-danger btn-card-close" aria-label="Close" style="margin: 1px;"><i class="bi bi-x-circle-fill"></i></button>
+    </div>
     <div class="header-custom text-white">
         <h2>Create Agent</h2>
     </div>
@@ -18,7 +22,7 @@
                 <input type="text" id="create-agent-ip" class="form-control" required placeholder="IP Address">
             </div>
             <div class="form-group">
-                <label for="create-agent-active">
+                <label for="create-agent-active" style="margin-right: 21px;vertical-align: 20px;">
                     <i class="bi-check2"></i> Active:
                 </label>
                 <input type="checkbox" id="create-agent-active" class="form-check-input">
@@ -29,3 +33,10 @@
         </form>
     </div>
 </div>
+<script>
+    $(document).ready(function() {
+    $(".btn-card-close").on('click', function() {
+        $(".card-agent").toggle();
+    });
+});
+</script>

@@ -38,7 +38,7 @@ $(document).ready(function () {
                 render: function (data) {
                     // Create a checkbox with checked (Yes) or unchecked (No)
                     var checked = data ? 'checked' : '';
-                    return '<div class="check-box"><input type="checkbox" ' + checked + '></div>';
+                    return '<div class="check-box agents-check-box"><input type="checkbox" ' + checked + '></div>';
                 }
                 
             },

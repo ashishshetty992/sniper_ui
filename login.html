@@ -6,24 +6,26 @@
     <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
-
-<div class="container mt-5">
-    <div class="col-md-6 offset-md-3">
-        <h2 class="mb-3">Login</h2>
-        <form id="login-form">
-            <div class="form-group">
-                <label for="username">Username:</label>
-                <input type="text" class="form-control" id="username" placeholder="Enter username">
-            </div>
-            <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" class="form-control" id="password" placeholder="Enter password">
-            </div>
-            <button type="submit" class="btn btn-primary">Login</button>
-            <p id="welcome-message" class="mt-3"></p>
-        </form>
+    <div class="login-container">
+        <div class="image-container">
+            <img src="https://thumbs.dreamstime.com/z/data-protection-cyber-security-privacy-business-internet-technology-concept-153621251.jpg?w=992" alt="Login Image">
+        </div>
+        <div class="form-container">
+            <h2>Login</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" class="form-control" id="username" placeholder="Enter username">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" class="form-control" id="password" placeholder="Enter password">
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+                <p id="welcome-message" class="mt-3"></p>
+            </form>
+        </div>
     </div>
-</div>
 
 <script src="js/jquery.min.js"></script>
 <script src="js/login.js"></script>

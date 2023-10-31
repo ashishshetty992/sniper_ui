@@ -13,7 +13,11 @@
 <body>
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-custom navbar-mainbg row">
-        <a class="navbar-brand navbar-logo" href="#">Navbar</a>
+    <a class="navbar-brand navbar-logo" href="index.html">
+                <img src="https://previews.123rf.com/images/nexusby/nexusby1712/nexusby171200015/91689622-cyber-security-logo-concept.jpg" width="50" height="50" class="d-inline-block align-top" alt="">
+    Sniper
+    </a>
+        </a>
         <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fas fa-bars text-white"></i>
         </button>
@@ -21,22 +25,22 @@
             <ul class="navbar-nav ml-auto">
                 <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
                 <li class="nav-item">
-                    <a class="nav-link" href="agents.html"><i class="fas fa-tachometer-alt"></i>Agent</a>
+                    <a class="nav-link" href="agents.html"><i class="bi-mouse2-fill"></i>Agent</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="index.html"><i class="far fa-address-book"></i>Home</a>
+                    <a class="nav-link" href="index.html"><i class="bi-house-door-fill"></i>Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="agent_profiles.html"><i class="far fa-clone"></i>Agent Profile</a>
+                    <a class="nav-link" href="javascript:void(0);"><i class="far fa-clone"></i>Agent Profile</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="rules.html"><i class="far fa-calendar-alt"></i>Rule</a>
+                    <a class="nav-link" href="javascript:void(0);"><i class="far fa-calendar-alt"></i>Rule</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="analytics.html"><i class="far fa-chart-bar"></i>Charts</a>
+                    <a class="nav-link" href="javascript:void(0);"><i class="far fa-chart-bar"></i>Charts</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="javascript:void(0);"><i class="far fa-copy"></i>Documents</a>
+                    <a class="nav-link" href="login.html"><i class="bi bi-gear-fill"></i>Logout</a>
                 </li>
             </ul>
         </div>
@@ -44,13 +48,13 @@
 
     <!-- Page Content -->
     <div class="container mt-4">
-        <h1>Welcome to Your Dashboard</h1>
+        <h1>Welcome to Sniper</h1>
         <!-- Add content for your dashboard here -->
         <div class="row">
-            <button id="create-user-button" class="col-md-2">Create User</button>
-            <button id="create-agent-button" class="col-md-2">Create Agent</button>
-            <button id="create-profile-button" class="col-md-2">Create Profile</button>
-            <button id="create-rule-button" class="col-md-2">Create Rule</button>
+            <button id="create-user-button" class="col-md-2 btn-primary" style="margin: 5px;">Create User</button>
+            <button id="create-agent-button" class="col-md-2 btn-primary" style="margin: 5px;">Create Agent</button>
+            <button id="create-profile-button" class="col-md-2 btn-primary" style="margin: 5px;">Create Profile</button>
+            <button id="create-rule-button" class="col-md-2 btn-primary"style="margin: 5px;">Create Rule</button>
             <div id="user-creation-form" class="user-popup"> </div>
             <div id="agent-creation-form" class="user-popup"> </div>
             <div id="profile-creation-form" class="user-popup"> </div>
@@ -58,6 +62,7 @@
         </div>
         <div class="row agents"> </div>
     </div>
+
     <div class="row" style="padding: 10px;">
         <div id="dashboard-container" class="col-md-6"></div>
         <div id="analytics-container" class="col-md-6"></div>
