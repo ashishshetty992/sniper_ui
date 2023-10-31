@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $.ajax({
-        url: 'http://0.0.0.0:9001/allprofilesagent/?skip=0&limit=10',
+        url: 'http://13.232.50.69:9001/allprofilesagent/?skip=0&limit=10',
         method: 'GET',
         dataType: 'json',
         success: function (data) {

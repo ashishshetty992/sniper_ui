@@ -86,7 +86,7 @@ function populateRoles() {
     // Make a GET request to fetch roles
     $.ajax({
         type: "GET",
-        url: "http://0.0.0.0:9001/roles/?skip=0&limit=10",
+        url: "http://13.232.50.69:9001/roles/?skip=0&limit=10",
         dataType: "json",
         success: function (rolesArray) {
             if (rolesArray && rolesArray.length > 0) {
@@ -112,7 +112,7 @@ function populateProfiles() {
     // Make a GET request to fetch roles
     $.ajax({
         type: "GET",
-        url: "http://0.0.0.0:9001/agentprofiles/?skip=0&limit=10",
+        url: "http://13.232.50.69:9001/agentprofiles/?skip=0&limit=10",
         dataType: "json",
         success: function (profilesArray) {
             if (profilesArray && profilesArray.length > 0) {
@@ -138,7 +138,7 @@ function populateAgents() {
     // Make a GET request to fetch agents
     $.ajax({
         type: "GET",
-        url: "http://0.0.0.0:9001/agents/?skip=0&limit=10",
+        url: "http://13.232.50.69:9001/agents/?skip=0&limit=10",
         dataType: "json",
         success: function (agentsArray) {
             if (agentsArray && agentsArray.length > 0) {
@@ -196,7 +196,7 @@ $(function () {
                     // Send a POST request to create the user
                     $.ajax({
                         type: "POST",
-                        url: "http://0.0.0.0:9001/users/",
+                        url: "http://13.232.50.69:9001/users/",
                         headers: {
                             "Authorization": `Bearer ${token}`
                         },
@@ -250,7 +250,7 @@ $(function () {
                 // Send a POST request to create the agent
                 $.ajax({
                     type: "POST",
-                    url: "http://0.0.0.0:9001/agents/",
+                    url: "http://13.232.50.69:9001/agents/",
                     contentType: "application/json",
                     data: JSON.stringify(agentObject),
                     success: function (data) {
@@ -293,7 +293,7 @@ $(function () {
                 // Send a POST request to create the profile
                 $.ajax({
                     type: "POST",
-                    url: "http://0.0.0.0:9001/agentprofiles/",
+                    url: "http://13.232.50.69:9001/agentprofiles/",
                     contentType: "application/json",
                     data: JSON.stringify(profileObject),
                     success: function (data) {
@@ -341,7 +341,7 @@ $(function () {
                 // Send a POST request to create the profile
                 $.ajax({
                     type: "POST",
-                    url: "http://0.0.0.0:9001/rules/",
+                    url: "http://13.232.50.69:9001/rules/",
                     contentType: "application/json",
                     data: JSON.stringify(ruleObject),
                     success: function (data) {

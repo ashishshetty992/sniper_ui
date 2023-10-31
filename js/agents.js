@@ -6,7 +6,7 @@ $(document).ready(function () {
 
     table =  $('#agent-profiles-table').DataTable({
         ajax: {
-            url: 'http://0.0.0.0:9001/allagentprofiles/?skip=0&limit=10',
+            url: 'http://13.232.50.69:9001/allagentprofiles/?skip=0&limit=10',
             dataSrc: '' // Use an empty string to indicate that the data source is an array
         },
         columns: [
