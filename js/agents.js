@@ -6,7 +6,7 @@ $(document).ready(function () {
 
     table =  $('#agent-profiles-table').DataTable({
         ajax: {
-            url: 'http://13.232.50.69:9001/allagentprofiles/?skip=0&limit=10',
+            url: 'http://localhost:9001/allagentprofiles/?skip=0&limit=10',
             dataSrc: '' // Use an empty string to indicate that the data source is an array
         },
         columns: [
@@ -153,17 +153,32 @@ $(document).ready(function () {
         $('#agent-profiles-table tbody').on('click', '.ping-btn', function () {
             var row = table.row($(this).parents('tr'));
             var data = row.data();
+            var data_json = JSON.stringify({hostname: data.ip_address, username: data.name, extension: 'xlsx'})
+            console.log(data_json)
     
             // Show a loading animation on the selected row
             row.nodes().to$().addClass('ping-loading');
-    
+            $.ajax({
+                type: "POST",
+                url: "http://localhost:9001/heartbeatcheck/",
+                contentType: "application/json",
+                data: data_json,
+                success: function (data) {
+                    $("#profile-creation-form, .overlay").hide();
+                    alert(data);
+                },
+                error: function (xhr, status, error) {
+                    alert("Heartbeat and file extension not accesible. Please try again.");
+                }
+            });
+
             // Simulate a delay for the ping operation (you can replace this with your actual operation)
             setTimeout(function () {
                 // Remove the loading animation
                 row.nodes().to$().removeClass('ping-loading');
     
                 // Show a success message in a toast
-                console.log('Ping successful!');
+                alert('Ping successful!');
     
                 // Highlight the selected row with a green background
                 row.nodes().to$().addClass('ping-success');
