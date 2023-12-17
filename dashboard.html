@@ -29,9 +29,18 @@
 <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>$(document).ready(function () {
+    const token = localStorage.getItem("access_token");
+    if (!token) {
+        // Redirect to login.html if the token is not present
+        window.location.href = 'login.html';
+        return; // Stop execution of the script
+    }
     var table = $('#rulesTable').DataTable({
         ajax: {
             url: 'http://localhost:9001/get_rules_with_agents_and_profile/?skip=0&limit=10',
+            headers: {
+                        "Authorization": `Bearer ${token}`
+                    },
             dataSrc: ''
         },
         columns: [

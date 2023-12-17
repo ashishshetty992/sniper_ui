@@ -67,7 +67,6 @@ $(document).ready(function () {
 
     $('#agent-profiles-table tbody').on('click', '.schedule-btn', function () {
         var profileId = $(this).data('id');
-
         // Create a modal with date, time, and scheduling options
         var modalHtml = `
             <div class="modal fade" id="scheduleModal" tabindex="-1" role="dialog" aria-labelledby="scheduleModalLabel" aria-hidden="true">
@@ -83,7 +82,7 @@ $(document).ready(function () {
                             <form>
                                 <div class="form-group">
                                     <label for="date">Date</label>
-                                    <input type="date" class="form-control" id="date" required>
+                                    <input type="date" class="form-control" id="date" min="" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="time">Time</label>
@@ -107,7 +106,7 @@ $(document).ready(function () {
                 </div>
             </div>
         `;
-
+        $('date').min = new Date().getFullYear() + "-" +  parseInt(new Date().getMonth() + 1 ) + "-" + new Date().getDate()
         // Append the modal HTML to the body
         $('body').append(modalHtml);
 
@@ -123,7 +122,8 @@ $(document).ready(function () {
         $('#saveSchedule').on('click', function () {
             // Retrieve the selected date, time, and scheduling option
             var selectedDate = $('#date').val();
-            var selectedTime = $('#time').val();
+            var selectedHour = $('#hour').val();
+            var selectedMinute = $('#minute').val();
             var selectedOption = $('#scheduleOptions').val();
 
 
@@ -138,6 +138,22 @@ $(document).ready(function () {
                 // Date is valid, hide the error message
                 $('.date-error').hide();
             }
+
+            var data_json = JSON.stringify({start_date: selectedDate, hour: selectedHour, minute:selectedMinute, frequency:selectedOption})
+            console.log(data_json)
+            $.ajax({
+                type: "POST",
+                url: "http://localhost:9001/schedule/rule-run",
+                contentType: "application/json",
+                data: data_json,
+                success: function (data) {
+                    $("#profile-creation-form, .overlay").hide();
+                    alert(data);
+                },
+                error: function (xhr, status, error) {
+                    alert("Heartbeat and file extension not accesible. Please try again.");
+                }
+            });
             
             $(".alert").show('medium');
             setTimeout(function(){

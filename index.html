@@ -40,7 +40,7 @@
                     <a class="nav-link" href="javascript:void(0);"><i class="far fa-chart-bar"></i>Charts</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="login.html"><i class="bi bi-gear-fill"></i>Logout</a>
+                    <a class="nav-link" id="logout" href="login.html"><i class="bi bi-gear-fill"></i>Logout</a>
                 </li>
             </ul>
         </div>
@@ -78,10 +78,13 @@
     <!-- Add your custom JavaScript file if needed -->
     <script>
         $(document).ready(function () {
-            $("#logout-link").on("click", function (e) {
+            $("#logout").on("click", function (e) {
+
                 e.preventDefault();
                 // Redirect to the logout page or perform logout action here
-                window.location.href = "logout.html";
+                localStorage.removeItem("access_token");
+                alert('ashish')
+                window.location.href = "login.html";
             });
             $("#dashboard-container").load("dashboard.html");
             $("#analytics-container").load("analytics.html");

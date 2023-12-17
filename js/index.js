@@ -250,21 +250,28 @@ $(function () {
                     password: password
                 };
 
-                // Send a POST request to create the agent
-                $.ajax({
-                    type: "POST",
-                    url: "http://localhost:9001/agents/",
-                    contentType: "application/json",
-                    data: JSON.stringify(agentObject),
-                    success: function (data) {
-                        $("#agent-creation-form, .overlay").hide();
-                        alert("Agent created successfully!");
-                        location.reload();
-                    },
-                    error: function (xhr, status, error) {
-                        alert("Agent creation failed. Please try again.");
-                    }
-                });
+                const token = localStorage.getItem("access_token");
+
+                if (token) {
+                    // Send a POST request to create the agent
+                    $.ajax({
+                        type: "POST",
+                        url: "http://localhost:9001/agents/",
+                        headers: {
+                            "Authorization": `Bearer ${token}`
+                        },
+                        contentType: "application/json",
+                        data: JSON.stringify(agentObject),
+                        success: function (data) {
+                            $("#agent-creation-form, .overlay").hide();
+                            alert("Agent created successfully!");
+                            location.reload();
+                        },
+                        error: function (xhr, status, error) {
+                            alert("Agent creation failed. Please try again.");
+                        }
+                    });
+                }
             });
         });
 
@@ -294,20 +301,27 @@ $(function () {
                     agent_ids: agentIds.map(Number) // Convert agent IDs to numbers
                 };
 
-                // Send a POST request to create the profile
-                $.ajax({
-                    type: "POST",
-                    url: "http://localhost:9001/agentprofiles/",
-                    contentType: "application/json",
-                    data: JSON.stringify(profileObject),
-                    success: function (data) {
-                        $("#profile-creation-form, .overlay").hide();
-                        alert("Profile created successfully!");
-                    },
-                    error: function (xhr, status, error) {
-                        alert("Profile creation failed. Please try again.");
-                    }
-                });
+                const token = localStorage.getItem("access_token");
+
+                if (token) {
+                    // Send a POST request to create the profile
+                    $.ajax({
+                        type: "POST",
+                        url: "http://localhost:9001/agentprofiles/",
+                        headers: {
+                            "Authorization": `Bearer ${token}`
+                        },
+                        contentType: "application/json",
+                        data: JSON.stringify(profileObject),
+                        success: function (data) {
+                            $("#profile-creation-form, .overlay").hide();
+                            alert("Profile created successfully!");
+                        },
+                        error: function (xhr, status, error) {
+                            alert("Profile creation failed. Please try again.");
+                        }
+                    });
+                }
             });
         });
 
@@ -341,21 +355,28 @@ $(function () {
                     agent_ids: agentIds.map(Number), // Convert agent IDs to numbers
                     agent_profile_ids: profileIds.map(Number) // Convert agent IDs to numbers
                 };
-    
-                // Send a POST request to create the profile
-                $.ajax({
-                    type: "POST",
-                    url: "http://localhost:9001/rules/",
-                    contentType: "application/json",
-                    data: JSON.stringify(ruleObject),
-                    success: function (data) {
-                        $("#ule-creation-form, .overlay").hide();
-                        alert("Rule created successfully!");
-                    },
-                    error: function (xhr, status, error) {
-                        alert("Rule creation failed. Please try again.");
-                    }
-                });
+                
+                const token = localStorage.getItem("access_token");
+
+                if (token) {
+                    // Send a POST request to create the profile
+                    $.ajax({
+                        type: "POST",
+                        url: "http://localhost:9001/rules/",
+                        headers: {
+                            "Authorization": `Bearer ${token}`
+                        },
+                        contentType: "application/json",
+                        data: JSON.stringify(ruleObject),
+                        success: function (data) {
+                            $("#ule-creation-form, .overlay").hide();
+                            alert("Rule created successfully!");
+                        },
+                        error: function (xhr, status, error) {
+                            alert("Rule creation failed. Please try again.");
+                        }
+                    });
+                }
             });
         });
     
