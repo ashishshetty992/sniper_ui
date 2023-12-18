@@ -151,7 +151,7 @@ $(document).ready(function () {
                     alert(data);
                 },
                 error: function (xhr, status, error) {
-                    alert("Heartbeat and file extension not accesible. Please try again.");
+                    alert("failed to schedule");
                 }
             });
             

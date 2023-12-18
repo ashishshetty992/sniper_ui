@@ -37,7 +37,7 @@
     }
     var table = $('#rulesTable').DataTable({
         ajax: {
-            url: 'http://localhost:9001/get_rules_with_agents_and_profile/?skip=0&limit=10',
+            url: 'http://127.0.0.1:9001/get_rules_with_agents_and_profile/?skip=0&limit=10',
             headers: {
                         "Authorization": `Bearer ${token}`
                     },
@@ -174,7 +174,8 @@
                 </div>
             </div>
         `;
-
+        
+        var rule_id = $(this).data('id')
         // Append the modal HTML to the body
         $('body').append(modalHtml);
 
@@ -191,7 +192,10 @@
             // Retrieve the selected date, time, and scheduling option
             var selectedDate = $('#date').val();
             var selectedTime = $('#time').val();
+            var hour = selectedTime.split(':')[0]
+            var minutes = selectedTime.split(':')[1]
             var selectedOption = $('#scheduleOptions').val();
+            console.log(rule_id)
 
 
             // Implement your scheduling logic here
@@ -213,6 +217,34 @@
 
             // Close the modal
             $('#scheduleModal').modal('hide');
+
+
+            $.ajax({
+                type: 'POST',
+                url: 'http://127.0.0.1:9001/schedule/rule-run',
+                contentType: 'application/json',
+                headers: {
+                        "Authorization": `Bearer ${token}`
+                    },
+                data: JSON.stringify({
+                    start_date: selectedDate,
+                    hour: hour,
+                    minutes: minutes,
+                    frequency: selectedOption,
+                    reference: 'rule',
+                    reference_id: rule_id
+                }),
+                success: function (data) {
+                    console.log('Success:', data);
+                    // Handle success response as needed
+                    rule_id = null
+                },
+                error: function (error) {
+                    console.error('Error:', error);
+                    // Handle error response as needed
+                    rule_id = null
+                }
+            });
         });
     });
 
