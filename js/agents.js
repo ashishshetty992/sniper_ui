@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    const token = localStorage.getItem("access_token");
 
     $(".sendButton .close").click(function(){
         $(".alert").hide('medium');
@@ -145,6 +146,9 @@ $(document).ready(function () {
                 type: "POST",
                 url: "http://localhost:9001/schedule/rule-run",
                 contentType: "application/json",
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                },
                 data: data_json,
                 success: function (data) {
                     $("#profile-creation-form, .overlay").hide();

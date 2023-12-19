@@ -108,12 +108,15 @@ function populateRoles() {
 
 function populateProfiles() {
     const profileSelect = $("#create-profile");
-
+    const token = localStorage.getItem("access_token");
     // Make a GET request to fetch roles
     $.ajax({
         type: "GET",
         url: "http://localhost:9001/agentprofiles/?skip=0&limit=10",
         dataType: "json",
+        headers: {
+            "Authorization": `Bearer ${token}`
+        },
         success: function (profilesArray) {
             if (profilesArray && profilesArray.length > 0) {
                 profilesArray.forEach(function (profile) {
@@ -134,12 +137,15 @@ function populateProfiles() {
 
 function populateAgents() {
     const agentsSelect = $("#create-profile-agents");
-
+    const token = localStorage.getItem("access_token");
     // Make a GET request to fetch agents
     $.ajax({
         type: "GET",
         url: "http://localhost:9001/agents/?skip=0&limit=10",
         dataType: "json",
+        headers: {
+            "Authorization": `Bearer ${token}`
+        },
         success: function (agentsArray) {
             if (agentsArray && agentsArray.length > 0) {
                 agentsArray.forEach(function (agent) {
@@ -190,8 +196,6 @@ $(function () {
                     },
                     role_ids: [parseInt(roleId)]
                 };
-                
-                const token = localStorage.getItem("access_token");
 
                 if (token) {
                     // Send a POST request to create the user
