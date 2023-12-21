@@ -8,6 +8,9 @@ $(document).ready(function () {
     table =  $('#agent-profiles-table').DataTable({
         ajax: {
             url: 'http://localhost:9001/allagentprofiles/?skip=0&limit=10',
+            headers: {
+                "Authorization": `Bearer ${token}`
+            },
             dataSrc: '' // Use an empty string to indicate that the data source is an array
         },
         columns: [
