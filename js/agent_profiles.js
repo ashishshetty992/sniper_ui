@@ -7,7 +7,7 @@ $(document).ready(function () {
 
     var table = $('#agent-profiles-table').DataTable({
         ajax: {
-            url: 'http://0.0.0.0:9001/allprofilesagent/?skip=0&limit=10',
+            url: 'http://localhost:9001/allprofilesagent/?skip=0&limit=10',
             headers: {
                 "Authorization": `Bearer ${token}`
             },
