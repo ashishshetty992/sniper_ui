@@ -11,6 +11,7 @@
                 <th>Exec Rule</th>
                 <th>Action</th>
                 <th>Schedule</th>
+                <th>Edit</th>
             </tr>
         </thead>
         <tbody>
@@ -60,6 +61,12 @@
                 data: 'id', // Assuming you have some unique identifier for scheduling
                 render: function (data) {
                     return '<button class="btn-sm btn-primary schedule-btn" data-id="' + data + '"><i class="bi bi-calendar"></i>  Schedule</button>';
+                }
+            },
+            {
+                data: 'id', // Assuming you have some unique identifier for scheduling
+                render: function (data) {
+                    return '<button class="btn-sm btn-primary edit-btn" data-id="' + data + '"><i class="bi bi-pen"></i>  Edit</button>';
                 }
             }
         ]
@@ -221,7 +228,7 @@
 
             $.ajax({
                 type: 'POST',
-                url: 'http://127.0.0.1:9001/schedule/rule-run',
+                url: 'http://localhost:9001/schedule/rule-run',
                 contentType: 'application/json',
                 headers: {
                         "Authorization": `Bearer ${token}`

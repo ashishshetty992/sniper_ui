@@ -113,6 +113,7 @@ $(document).ready(function () {
         $('date').min = new Date().getFullYear() + "-" +  parseInt(new Date().getMonth() + 1 ) + "-" + new Date().getDate()
         // Append the modal HTML to the body
         $('body').append(modalHtml);
+        var agent_id = $(this).data('id')
 
         // Show the modal
         $('#scheduleModal').modal('show');
@@ -126,9 +127,11 @@ $(document).ready(function () {
         $('#saveSchedule').on('click', function () {
             // Retrieve the selected date, time, and scheduling option
             var selectedDate = $('#date').val();
-            var selectedHour = $('#hour').val();
-            var selectedMinute = $('#minute').val();
+            var selectedTime = $('#time').val();
+            var hour = selectedTime.split(':')[0]
+            var minutes = selectedTime.split(':')[1]
             var selectedOption = $('#scheduleOptions').val();
+            console.log(agent_id)
 
 
             // Implement your scheduling logic here
@@ -143,8 +146,6 @@ $(document).ready(function () {
                 $('.date-error').hide();
             }
 
-            var data_json = JSON.stringify({start_date: selectedDate, hour: selectedHour, minute:selectedMinute, frequency:selectedOption})
-            console.log(data_json)
             $.ajax({
                 type: "POST",
                 url: "http://localhost:9001/schedule/rule-run",
@@ -152,7 +153,14 @@ $(document).ready(function () {
                 headers: {
                     "Authorization": `Bearer ${token}`
                 },
-                data: data_json,
+                data: JSON.stringify({
+                    start_date: selectedDate,
+                    hour: hour,
+                    minutes: minutes,
+                    frequency: selectedOption,
+                    reference: 'agent',
+                    reference_id: agent_id
+                }),
                 success: function (data) {
                     $("#profile-creation-form, .overlay").hide();
                     alert(data);

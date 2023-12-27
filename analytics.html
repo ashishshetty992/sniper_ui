@@ -59,20 +59,56 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         // Dummy data
+        const token = localStorage.getItem("access_token");
+let analyticsDataGet;
+
+// Use a promise to handle the asynchronous AJAX request
+const fetchData = () => {
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            url: 'http://localhost:9001/get_analytics_data/',
+            type: 'GET',
+            headers: {
+                'accept': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            success: function (data) {
+                // Resolve the promise with the received data
+                resolve(data);
+            },
+            error: function (xhr, status, error) {
+                // Reject the promise with the error
+                reject(error);
+            }
+        });
+    });
+};
+
+// Call the fetchData function and handle the promise
+fetchData()
+    .then((data) => {
+        // Handle the success response
+        console.log('Data:', data);
+        analyticsDataGet = data;
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    })
+    .finally(() => {
         var analyticsData = {
             totalExecutions: 800,
             totalFailed: 200,
             totalPassed: 600,
-            totalAgents: 50,
-            totalProfiles: 5,
+            totalAgents: analyticsDataGet.agent_count,
+            totalProfiles: analyticsDataGet.agent_profile_count,
             totalDeactiveAgents: 10,
-            rulesExecuting: 4,
+            rulesExecuting: analyticsDataGet.schedule_count,
             averageExecutionTime: 12, // in seconds
-            agentsInRules: 30
+            agentsInRules: analyticsDataGet.rule_count
         };
 
-        // Chart 1: Failed and Passed Executions
-        var ctx1 = document.getElementById('chartFailedPassed').getContext('2d');
+                // Chart 1: Failed and Passed Executions
+                var ctx1 = document.getElementById('chartFailedPassed').getContext('2d');
         var chart1 = new Chart(ctx1, {
             type: 'doughnut',
             data: {
@@ -194,6 +230,8 @@
                 chart3.update();
             }
         });
+    });
+
     </script>
 </body>
 </html>

@@ -242,15 +242,16 @@ $(function () {
                 event.preventDefault();
                 
                 const agentName = $("#create-agent-name").val();
+                const name = $("#create-name").val();
                 const agentIP = $("#create-agent-ip").val();
-                const agentActive = $("#create-agent-active").prop("checked");
                 const password = $("#create-agent-password").val();
 
                 // Create the agent object
                 const agentObject = {
-                    name: agentName,
+                    name: name,
+                    agent_name: agentName,
                     ip_address: agentIP,
-                    active: agentActive,
+                    active: true,
                     password: password
                 };
 
@@ -300,7 +301,8 @@ $(function () {
                 // Create the profile object
                 const profileObject = {
                     agent_profile: {
-                        name: profileName
+                        name: profileName,
+                        active: true
                     },
                     agent_ids: agentIds.map(Number) // Convert agent IDs to numbers
                 };
@@ -333,10 +335,235 @@ $(function () {
         $("#profile-creation-form, .overlay").show();
     });
 
+//     // JavaScript Logic for the Edit Rule Form
+$(document).on("click", ".edit-btn", function () {
+    const ruleId = $(this).data("id");
+    fetchRuleDetailsForEdit(ruleId);
+    openEditRuleForm(ruleId);
+});
+
+// Function to fetch rule details for editing
+function fetchRuleDetailsForEdit(ruleId) {
+    const token = localStorage.getItem("access_token");
+
+    $.ajax({
+        type: "GET",
+        url: `http://localhost:9001/get_rules_with_agents_and_profile_by_rule_id/${ruleId}`,
+        headers: {
+            "Authorization": `Bearer ${token}`
+        },
+        success: function (ruleDetails) {
+            // Populate the form with the fetched rule details
+            populateEditForm(ruleDetails);
+        },
+        error: function () {
+            alert("Failed to fetch rule details. Please try again.");
+        }
+    });
+}
+
+// Function to populate the edit form with rule details
+function populateEditForm(ruleDetails) {
+    console.log(ruleDetails)
+    // Example: Display rule name, path, category, and subcategory
+    $("#edit-name").val(ruleDetails.rule.name);
+    $("#rule-id").val(ruleDetails.rule.id);
+    $("#edit-path").val(ruleDetails.rule.path);
+    $("#edit-category").val(ruleDetails.rule.category);
+    $("#edit-sub-category").val(ruleDetails.rule.sub_category);
+
+    // Example: Populate selected agents in the dropdown
+    console.log('ruleDetails.agents')
+    populateAllOptions("#edit-agents", ruleDetails.rule.agents);
+
+    console.log('ruleDetails.allAgents')
+    // Example: Populate all agents in the dropdown
+    populateAllOptions("#all-agents", ruleDetails.agents);
+
+    console.log('ruleDetails.agent_profiles')
+    // Example: Populate selected agent profiles in the dropdown
+    populateAllOptions("#edit-profiles", ruleDetails.rule.agent_profiles);
+
+    console.log('ruleDetails.allAgentProfiles')
+    // Example: Populate all agent profiles in the dropdown
+    populateAllOptions("#all-profiles", ruleDetails.agent_profiles);
+
+    console.log(ruleDetails);
+    // Show the edit form after populating the details
+    // $("#editRuleForm, .overlay").show();
+}
+
+// Example function to populate all options in a dropdown
+function populateAllOptions(dropdownId, allOptions) {
+    const dropdown = $(dropdownId);
+    dropdown.empty(); // Clear existing options
+
+    console.log('allOptions')
+    allOptions.forEach(option => {
+        dropdown.append($('<option>', {
+            value: option.id,
+            text: option.name
+        }));
+    });
+    $("#edit-agents option").prop("selected", true);
+    $("#edit-profiles option").prop("selected", true);
+}
+
+function addAgent() {
+    const selectedAgents = $("#edit-agents").val() || [];
+
+    // Get the selected agents from the "all-agents" dropdown
+    const newAgents = $("#all-agents").val() || [];
+
+
+    // Filter out the agents that are already selected
+    const agentsToAdd = newAgents.filter(agent => !selectedAgents.includes(agent));
+    debugger;
+    // Add the new agents to the "edit-agents" dropdown
+    agentsToAdd.forEach(agentId => {
+        const agentText = $(`#all-agents option[value="${agentId}"]`).text();
+        $("#edit-agents").append(`<option value="${agentId}" selected>${agentText}</option>`);
+    });
+    $("#edit-agents option").prop("selected", true);
+}
+
+// Add event listeners for adding and removing agents and profiles
+$("#add-agent-btn").on("click", function () {
+    addAgent();
+});
+
+function removeAgent() {
+    // Get the selected agents from the "edit-agents" dropdown
+    const selectedAgents = $("#edit-agents").val() || [];
+
+    // Remove the selected agents from the "edit-agents" dropdown
+    selectedAgents.forEach(agentId => {
+        $(`#edit-agents option[value="${agentId}"]`).remove();
+    });
+    $("#edit-agents option").prop("selected", true);
+}
+
+// Event listener for the "Remove Agent" button
+$("#remove-agent-btn").on("click", function () {
+    event.preventDefault();
+    removeAgent();
+});
+
+
+function addProfile() {
+    const selectedProfiles = $("#edit-profiles").val() || [];
+
+    // Get the selected agents from the "all-agents" dropdown
+    const newProfile = $("#all-profiles").val() || [];
+
+    // Filter out the agents that are already selected
+    const profilesToAdd = newProfile.filter(profile => !selectedProfiles.includes(profile));
+    // Add the new agents to the "edit-profiles" dropdown
+
+    profilesToAdd.forEach(profileId => {
+        const profileText = $(`#all-profiles option[value="${profileId}"]`).text();
+        $("#edit-profiles").append(`<option value="${profileId}" selected>${profileText}</option>`);
+    });
+    $("#edit-profiles option").prop("selected", true);
+}
+
+$("#add-profile-btn").on("click", function () {
+    addProfile();
+});
+
+function removeProfile() {
+    // Get the selected agents from the "edit-agents" dropdown
+    const selectedProfiles = $("#edit-profiles").val() || [];
+
+    // Remove the selected agents from the "edit-agents" dropdown
+    selectedProfiles.forEach(profileId => {
+        $(`#edit-profiles option[value="${profileId}"]`).remove();
+    });
+    $("#edit-profiles option").prop("selected", true);
+}
+
+
+
+$("#remove-profile-btn").on("click", function () {
+    event.preventDefault();
+    removeProfile();
+});
+
+// // Add event listener for form submission
+// $("#edit-rule-form").on("submit", function (event) {
+//     event.preventDefault();
+    
+//     // Logic to handle form submission and update the rule
+// });
+
+// Add event listener for cancel button
+$("#cancel-edit-btn").on("click", function () {
+    closeEditRuleForm();
+});
+
+$("#edit-rule-form").on("submit", function (event) {
+    event.preventDefault();
+    // Collect input box values
+    const ruleName = $("#edit-name").val();
+    const ruleId = $('#rule-id').val()
+    const rulePath = $("#edit-path").val();
+    const ruleCategory = $("#edit-category").val();
+    const ruleSubCategory = $("#edit-sub-category").val();
+
+    // Collect selected agent IDs and profile IDs
+    const selectedAgentIds = $("#edit-agents").val();
+    const selectedProfileIds = $("#edit-profiles").val();
+
+    // Create the payload for the PUT request
+    const putPayload = {
+        rule_update: {
+            name: ruleName,
+            path: rulePath,
+            category: ruleCategory,
+            sub_category: ruleSubCategory
+        },
+        agent_ids: selectedAgentIds,
+        agent_profile_ids: selectedProfileIds
+    };
+
+    const token = localStorage.getItem("access_token");
+    if (token) {
+        // Send a PUT request to update the rule
+        $.ajax({
+            type: "PUT",
+            url: `http://localhost:9001/rules/${ruleId}`,
+            headers: {
+                "Authorization": `Bearer ${token}`
+            },
+            contentType: "application/json",
+            data: JSON.stringify(putPayload),
+            success: function (data) {
+                $("#editRuleForm, .overlay").hide();
+                alert("Rule updated successfully!");
+                location.reload();
+            },
+            error: function (xhr, status, error) {
+                alert("Rule update failed. Please try again.");
+            }
+        });
+    }
+});
+
+
+// Example function to open and close the edit rule form
+function openEditRuleForm(ruleId) {
+    $("#editRuleForm, .overlay").show();
+}
+
+function closeEditRuleForm() {
+    $("#editRuleForm, .overlay").hide();
+}
+
+
     $("#create-rule-button").on("click", function () {
         $("#rule-creation-form").load("rule_creation_form.html", function () {
             // Handle profile creation form here
-    
+
             // Fetch and populate agents in the multi-select input
             populateAgents();
             populateProfiles()
@@ -344,21 +571,28 @@ $(function () {
             // Handle the form submission
             $("#rule-creation-form").on("submit", function (event) {
                 event.preventDefault();
-    
+
                 const ruleName = $("#create-name").val();
                 const rule = $("#create-rule").val();
                 const agentIds = $("#create-profile-agents").val();
                 const profileIds = $("#create-profile").val();
-    
+                const ruleCategory = $("#create-category").val()
+                const ruleSubCategory = $("#create-sub-category").val()
+                const rulePath = $("#create-path").val()
                 // Create the profile object
                 const ruleObject = {
                     rule: {
                         name: ruleName,
                         exec_rule: rule,
+                        category: ruleCategory,
+                        sub_category: ruleSubCategory,
+                        active: true,
+                        path: rulePath
                     },
                     agent_ids: agentIds.map(Number), // Convert agent IDs to numbers
                     agent_profile_ids: profileIds.map(Number) // Convert agent IDs to numbers
                 };
+                console.log(ruleObject)
                 
                 const token = localStorage.getItem("access_token");
 
@@ -383,8 +617,6 @@ $(function () {
                 }
             });
         });
-    
-        // Show the #rule-creation-form after loading
         $("#rule-creation-form, .overlay").show();
     });
 });
