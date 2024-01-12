@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Dashboard - NiceAdmin Bootstrap Template</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: NiceAdmin
+  * Updated: Nov 17 2023 with Bootstrap v5.3.2
+  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center">
+        <img src="assets/img/logo.png" alt="">
+        <span class="d-none d-lg-block">SNIPER</span>
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
+
+    <div class="search-bar">
+      <form class="search-form d-flex align-items-center" method="POST" action="#">
+        <input type="text" name="query" placeholder="Search" title="Enter search keyword">
+        <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+      </form>
+    </div><!-- End Search Bar -->
+
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+
+        <li class="nav-item d-block d-lg-none">
+          <a class="nav-link nav-icon search-bar-toggle " href="#">
+            <i class="bi bi-search"></i>
+          </a>
+        </li><!-- End Search Icon-->
+
+        <li class="nav-item dropdown">
+
+          <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+            <i class="bi bi-bell"></i>
+            <span class="badge bg-primary badge-number">4</span>
+          </a><!-- End Notification Icon -->
+
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
+            <li class="dropdown-header">
+              You have 4 new notifications
+              <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="notification-item">
+              <i class="bi bi-exclamation-circle text-warning"></i>
+              <div>
+                <h4>Lorem Ipsum</h4>
+                <p>Quae dolorem earum veritatis oditseno</p>
+                <p>30 min. ago</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="notification-item">
+              <i class="bi bi-x-circle text-danger"></i>
+              <div>
+                <h4>Atque rerum nesciunt</h4>
+                <p>Quae dolorem earum veritatis oditseno</p>
+                <p>1 hr. ago</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="notification-item">
+              <i class="bi bi-check-circle text-success"></i>
+              <div>
+                <h4>Sit rerum fuga</h4>
+                <p>Quae dolorem earum veritatis oditseno</p>
+                <p>2 hrs. ago</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="notification-item">
+              <i class="bi bi-info-circle text-primary"></i>
+              <div>
+                <h4>Dicta reprehenderit</h4>
+                <p>Quae dolorem earum veritatis oditseno</p>
+                <p>4 hrs. ago</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li class="dropdown-footer">
+              <a href="#">Show all notifications</a>
+            </li>
+
+          </ul><!-- End Notification Dropdown Items -->
+
+        </li><!-- End Notification Nav -->
+
+        <li class="nav-item dropdown">
+
+          <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+            <i class="bi bi-chat-left-text"></i>
+            <span class="badge bg-success badge-number">3</span>
+          </a><!-- End Messages Icon -->
+
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
+            <li class="dropdown-header">
+              You have 3 new messages
+              <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="message-item">
+              <a href="#">
+                <img src="assets/img/messages-1.jpg" alt="" class="rounded-circle">
+                <div>
+                  <h4>Maria Hudson</h4>
+                  <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
+                  <p>4 hrs. ago</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="message-item">
+              <a href="#">
+                <img src="assets/img/messages-2.jpg" alt="" class="rounded-circle">
+                <div>
+                  <h4>Anna Nelson</h4>
+                  <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
+                  <p>6 hrs. ago</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="message-item">
+              <a href="#">
+                <img src="assets/img/messages-3.jpg" alt="" class="rounded-circle">
+                <div>
+                  <h4>David Muldon</h4>
+                  <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
+                  <p>8 hrs. ago</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="dropdown-footer">
+              <a href="#">Show all messages</a>
+            </li>
+
+          </ul><!-- End Messages Dropdown Items -->
+
+        </li><!-- End Messages Nav -->
+
+        <li class="nav-item dropdown pe-3">
+
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+            <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+            <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
+          </a><!-- End Profile Iamge Icon -->
+
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+            <li class="dropdown-header">
+              <h6>Kevin Anderson</h6>
+              <span>Web Designer</span>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                <i class="bi bi-person"></i>
+                <span>My Profile</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                <i class="bi bi-gear"></i>
+                <span>Account Settings</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
+                <i class="bi bi-question-circle"></i>
+                <span>Need Help?</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="#">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Sign Out</span>
+              </a>
+            </li>
+
+          </ul><!-- End Profile Dropdown Items -->
+        </li><!-- End Profile Nav -->
+
+      </ul>
+    </nav><!-- End Icons Navigation -->
+
+  </header><!-- End Header -->
+
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+      <li class="nav-item">
+        <a class="nav-link " href="index.html">
+          <i class="bi bi-grid"></i>
+          <span>Dashboard</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link " href="agents.html">
+          <i class="bi bi-grid"></i>
+          <span>Agents</span>
+        </a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link " href="agent_profile.html">
+          <i class="bi bi-grid"></i>
+          <span>Agent Profile</span>
+        </a>
+      </li>
+      
+      <!-- End Dashboard Nav -->
+
+      <li class="nav-heading">Pages</li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="users-profile.html">
+          <i class="bi bi-person"></i>
+          <span>Profile</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="pages-faq.html">
+          <i class="bi bi-question-circle"></i>
+          <span>F.A.Q</span>
+        </a>
+      </li><!-- End F.A.Q Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="pages-contact.html">
+          <i class="bi bi-envelope"></i>
+          <span>Contact</span>
+        </a>
+      </li><!-- End Contact Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="pages-register.html">
+          <i class="bi bi-card-list"></i>
+          <span>Register</span>
+        </a>
+      </li><!-- End Register Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="pages-login.html">
+          <i class="bi bi-box-arrow-in-right"></i>
+          <span>Login</span>
+        </a>
+      </li><!-- End Login Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="pages-error-404.html">
+          <i class="bi bi-dash-circle"></i>
+          <span>Error 404</span>
+        </a>
+      </li><!-- End Error 404 Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="pages-blank.html">
+          <i class="bi bi-file-earmark"></i>
+          <span>Blank</span>
+        </a>
+      </li><!-- End Blank Page Nav -->
+
+    </ul>
+
+  </aside><!-- End Sidebar-->
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Agent Profile</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item active">Agent Profile</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section dashboard">
+      <div class="row">
+
+        <!-- Left side columns -->
+        <div class="col-lg-8">
+          <div class="row">
+
+            <!-- Reports -->
+            <div class="col-12">
+              <div class="card">
+
+                <div class="card-body">
+                  <h5 class="card-title">Agent Profile<span>/Dashboard</span></h5>
+
+                  <!-- Line Chart -->
+                  <section class="section">
+                    <div class="row">
+                      <div class="col-lg-12">
+              
+                        <table id="agent-profiles-table" style="width: 100%;" class="table">
+                          <thead>
+                            <tr>
+                              <th>ID</th>
+                              <th>Name</th>
+                              <th>Created At</th>
+                              <th>Agent List</th>
+                              <th>Schedule</th>
+                              <th>Ping</th>
+                              <th>Edit</th>
+                            </tr>
+                          </thead>
+                          <tbody></tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </section>
+
+                  <!-- End Line Chart -->
+
+                </div>
+
+              </div>
+            </div><!-- End Reports -->
+
+          </div>
+        </div><!-- End Left side columns -->
+
+        <!-- Right side columns -->
+        <div class="col-lg-4">
+
+          <div class="card schedule-card">
+            <div class="card-body">
+              <h5 class="card-title">Schedule</h5>
+
+              <div class="alert alert-success alert-dismissible fade show rule-schedule-success-alert" role="alert">
+                <i class="bi bi-check-circle me-1"></i>
+                    Agent Profile Rule Scheduled successfully !!!
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+
+              <div class="alert alert-danger alert-dismissible fade show rule-schedule-fail-alert" role="alert">
+                <i class="bi bi-exclamation-octagon me-1"></i>
+                    Agent Profile Rule Scheduler not able to create !!!
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+
+              <form id="schedule-creation-form">
+
+                <div class="form-floating mb-3">
+                  <input type="date"  id="create-date" class="form-control" id="floatingInput" required placeholder="Date">
+                  <label for="floatingInput">Date</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                  <input type="time"  id="create-time" class="form-control" id="floatingInput" required placeholder="Time">
+                  <label for="floatingInput">Time</label>
+                </div>
+
+                <div class="form-group">
+                    <label for="scheduleOptions">Scheduling Options</label>
+                    <select class="form-control" id="scheduleOptions">
+                        <option value="daily">Once a Day</option>
+                        <option value="weekly">Once a Week</option>
+                        <option value="monthly">Once a Month</option>
+                    </select>
+                </div>
+                <br>
+
+                <button type="submit" class="btn btn-primary">
+                  <i class="fas fa-user-plus"></i> Schedule
+              </button>
+
+
+            </form>
+            </div>
+          </div>
+
+          <!-- Recent Activity -->
+
+          <button type="button" class="btn btn-primary create-entity-button" data-bs-toggle="tooltip" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Create Rules | Agents | Profiles" aria-label="Create" style="margin: 2%;">Create Entities</button>
+          <br>
+            <div class="card card-create-entities">
+              <div class="card-body">
+                <h5 class="card-title">Create</h5>
+  
+                <!-- Pills Tabs -->
+                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                  <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Rule</button>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Agent</button>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Profile</button>
+                  </li>
+                </ul>
+
+                <div class="tab-content pt-2" id="myTabContent">
+                  <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="home-tab">
+
+                    <div class="alert alert-success alert-dismissible fade show rule-success-alert" role="alert">
+                      <i class="bi bi-check-circle me-1"></i>
+                        Rule created successfully !!!
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+
+                    <div class="alert alert-danger alert-dismissible fade show rule-fail-alert" role="alert">
+                      <i class="bi bi-exclamation-octagon me-1"></i>
+                        Rule not create Please verify the details !!!
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+
+                    <form id="rule-creation-form">
+
+                      <div class="form-floating mb-3">
+                        <input type="text"  id="create-name" class="form-control" id="floatingInput" required placeholder="Rule Name">
+                        <label for="floatingInput">Rule Name</label>
+                      </div>
+
+                      <div class="form-floating mb-3">
+                        <input type="text"  id="create-category" class="form-control" id="floatingInput" required placeholder="Rule Category">
+                        <label for="floatingInput">Rule Category</label>
+                      </div>
+
+                      <div class="form-floating mb-3">
+                        <input type="text"  id="create-sub-category" class="form-control" id="floatingInput" required placeholder="Rule SubCategory">
+                        <label for="floatingInput">Rule SubCategory</label>
+                      </div>
+
+                      <div class="form-floating mb-3">
+                        <input type="text"  id="create-rule" class="form-control" id="floatingInput" required placeholder="Executale Rule">
+                        <label for="floatingInput">Executale Rule</label>
+                      </div>
+
+                      <div class="form-floating mb-3">
+                        <input type="text"  id="create-path" class="form-control" id="floatingInput" required placeholder="Executale Path">
+                        <label for="floatingInput">Executale Path</label>
+                      </div>
+
+                      <div class="card">
+                        <div class="form-group">
+                          <div class="card-body">
+                            <h7 class="card-title">Agents</h5>
+                              <div class="agent-checkboxes">
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="card">
+                        <div class="form-group">
+                          <div class="card-body">
+                            <h7 class="card-title">Agent Profiles</h5>
+                              <div class="profile-checkboxes">
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <br>
+                      <button type="submit" class="btn btn-primary">
+                          <i class="fas fa-user-plus"></i> Add Rule
+                      </button>
+                  </form>
+
+                  </div>
+
+
+                  <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="profile-tab">
+                    <div class="alert alert-success alert-dismissible fade show agent-success-alert" role="alert">
+                      <i class="bi bi-check-circle me-1"></i>
+                        Agent created successfully !!!
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+
+                    <div class="alert alert-danger alert-dismissible fade show agent-fail-alert" role="alert">
+                      <i class="bi bi-exclamation-octagon me-1"></i>
+                      Agent Not Create Please verify the details !!!
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+
+                    <form id="agent-creation-form">
+                        <div class="form-floating mb-3">
+                          <input type="text"  id="create-agent-name" class="form-control" id="floatingInput" required placeholder="Agent Name">
+                          <label for="floatingInput">Agent Name</label>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                          <input type="text"  id="create-name" class="form-control" id="floatingInput" required placeholder="User Name">
+                          <label for="floatingInput">Agent User Name</label>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                          <input type="text"  id="create-agent-ip" class="form-control" id="floatingInput" required placeholder="IP Address">
+                          <label for="floatingInput">IP Address</label>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                          <input type="password"  id="create-agent-password" class="form-control" id="floatingInput" required placeholder="Password">
+                          <label for="floatingInput">Password</label>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary create-agent-submit">
+                            <i class="fas fa-save"></i> Create Agent
+                        </button>
+                    </form>
+                  </div>
+
+
+                  <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="contact-tab">
+                    <div class="alert alert-success alert-dismissible fade show profile-success-alert" role="alert">
+                      <i class="bi bi-check-circle me-1"></i>
+                        Profile created successfully !!!
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+
+                    <div class="alert alert-danger alert-dismissible fade show profile-fail-alert" role="alert">
+                      <i class="bi bi-exclamation-octagon me-1"></i>
+                      Profile Not Create Please verify the details !!!
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+
+                    <form id="profile-creation-form">
+                        <div class="form-floating mb-3">
+                          <input type="text"  id="create-profile-name" class="form-control" id="floatingInput" required placeholder="Profile Name">
+                          <label for="floatingInput">Profile Name</label>
+                        </div>
+
+                        <div class="card">
+                          <div class="form-group">
+                            <div class="card-body">
+                              <h7 class="card-title">Agents</h5>
+                                <div class="agent-checkboxes">
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary create-profile-submit">
+                            <i class="fas fa-save"></i> Create Profile
+                        </button>
+                    </form>
+                  </div>
+                </div><!-- End Pills Tabs -->
+  
+            </div>
+          </div><!-- End Recent Activity -->
+
+          <!-- Budget Report -->
+          <div class="card">
+          </div><!-- End Budget Report -->
+
+          <!-- Analytics -->
+          <div class="card">
+            <div class="filter">
+              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                <li class="dropdown-header text-start">
+                  <h6>Filter</h6>
+                </li>
+
+                <li><a class="dropdown-item" href="#">Today</a></li>
+                <li><a class="dropdown-item" href="#">This Month</a></li>
+                <li><a class="dropdown-item" href="#">This Year</a></li>
+              </ul>
+            </div>
+
+            <div class="card-body pb-0">
+              <h5 class="card-title">Analytics</h5>
+
+              <div id="dashboard" style="min-height: 400px;" class="echart"></div>
+
+              <script>
+                const token = localStorage.getItem("access_token");
+
+                document.addEventListener("DOMContentLoaded", () => {
+                $.ajax({
+                    url: 'http://localhost:9001/get_analytics_data/',
+                    type: 'GET',
+                    headers: {
+                        'accept': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    success: function (data) {
+                        updateChart(data);
+                    },
+                    error: function (xhr, status, error) {
+                        console.error("Failed to fetch analytics data. Error: ", error);
+                    }
+                });
+
+                // Function to update the chart with the received data
+                function updateChart(analyticsData) {
+                    const {
+                        agent_count,
+                        agent_profile_count,
+                        schedule_count,
+                        rule_count
+                    } = analyticsData;
+
+                    // Initialize and set options for the ECharts chart
+                    const chart = echarts.init(document.querySelector("#dashboard"));
+                    chart.setOption({
+                        tooltip: {
+                            trigger: 'item'
+                        },
+                        legend: {
+                            top: '5%',
+                            left: 'center'
+                        },
+                        series: [{
+                            name: 'Access From',
+                            type: 'pie',
+                            radius: ['40%', '70%'],
+                            avoidLabelOverlap: false,
+                            label: {
+                                show: false,
+                                position: 'center'
+                            },
+                            emphasis: {
+                                label: {
+                                    show: true,
+                                    fontSize: '18',
+                                    fontWeight: 'bold'
+                                }
+                            },
+                            labelLine: {
+                                show: false
+                            },
+                            // Use the received data in the 'data' array
+                            data: [{
+                                    value: agent_count,
+                                    name: 'Agents'
+                                },
+                                {
+                                    value: agent_profile_count,
+                                    name: 'Agent Profiles'
+                                },
+                                {
+                                    value: schedule_count,
+                                    name: 'Schedules'
+                                },
+                                {
+                                    value: rule_count,
+                                    name: 'Rules'
+                                }
+                            ]
+                        }]
+                    });
+                  }
+              });
+
+              </script>
+
+            </div>
+          </div><!-- End Website Traffic -->
+
+        </div><!-- End Right side columns -->
+
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="copyright">
+      &copy; Copyright <strong><span>CodeMonks</span></strong>. All Rights Reserved
+    </div>
+    <div class="credits">
+      <!-- All the links in the footer should remain intact. -->
+      <!-- You can delete the links only if you purchased the pro version. -->
+      <!-- Licensing information: https://bootstrapmade.com/license/ -->
+      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
+      Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/chart.js/chart.umd.js"></script>
+  <script src="assets/vendor/echarts/echarts.min.js"></script>
+  <script src="assets/vendor/quill/quill.min.js"></script>
+  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/jquery.min.js"></script>
+  <script src="assets/vendor/datatable.min.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/agent_profile.js"></script>
+
+</body>
+
+</html>
