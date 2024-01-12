@@ -202,7 +202,7 @@
     $("#rule-creation-form").on("submit", function (event) {
         event.preventDefault();
 
-        const ruleName = $("#create-name").val();
+        const ruleName = $("#create-rule-name").val();
         const rule = $("#create-rule").val();
         const agentIds = getSelectedCheckboxValues('agent-checkboxes');
         const profileIds = getSelectedCheckboxValues('profile-checkboxes');
