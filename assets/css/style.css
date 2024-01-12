@@ -1238,3 +1238,12 @@ h6 {
   font-weight: 600;
   cursor: pointer;
 }
+
+.ping-success td{
+  background: #78e3b1 !important; /* Use !important only if necessary */
+}
+
+
+.ping-failure td{
+  background: #ff5959 !important; /* Use !important only if necessary */
+}

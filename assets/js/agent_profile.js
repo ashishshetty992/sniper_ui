@@ -54,12 +54,6 @@
                     return '<button class="btn btn-success btn-circle btn-circle-sm ping-btn"  data-id="' + data + '"><i class="bi bi-activity"></i></button>';
                 }
             },
-            {
-                data: 'id', // Assuming you have some unique identifier for scheduling
-                render: function (data) {
-                    return '<button class="btn btn-secondary btn-warning edit-btn" data-id="' + data + '"><i class="bi bi-pen"></i></button>';
-                }
-            },
         ],
         paging: true,
         searching: true,
@@ -411,10 +405,16 @@
             contentType: "application/json",
             data: data_json,
             success: function (data) {
-                row.nodes().to$().css('background', '#78e3b1');
+                row.nodes().to$().addClass('ping-success');
+                setTimeout(function() {
+                    row.nodes().to$().removeClass('ping-success');
+                }, 60000);
             },
             error: function (xhr, status, error) {
-                row.nodes().to$().css('background', '#ff5959');
+                row.nodes().to$().addClass('ping-failure');
+                setTimeout(function() {
+                    row.nodes().to$().removeClass('ping-failure');
+                }, 60000);
             }
         });
     });
