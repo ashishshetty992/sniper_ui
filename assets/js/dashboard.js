@@ -19,7 +19,7 @@
 
     if (!token) {
         // Redirect to login.html if the token is not present
-        window.location.href = 'login.html';
+        window.location.href = 'pages-login.html';
         return; // Stop execution of the script
     }
     var table = $('#rulesTable').DataTable({
