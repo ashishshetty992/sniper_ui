@@ -199,52 +199,99 @@
         return selectedValues;
     }
 
+    // $("#rule-creation-form").on("submit", function (event) {
+    //     event.preventDefault();
+
+    //     const ruleName = $("#create-rule-name").val();
+    //     const rule = $("#create-rule").val();
+    //     const agentIds = getSelectedCheckboxValues('agent-checkboxes');
+    //     const profileIds = getSelectedCheckboxValues('profile-checkboxes');
+    //     const ruleCategory = $("#create-category").val()
+    //     const ruleSubCategory = $("#create-sub-category").val()
+    //     const rulePath = $("#create-path").val()
+    //     // Create the profile object
+    //     const ruleObject = {
+    //         rule: {
+    //             name: ruleName,
+    //             exec_rule: rule,
+    //             category: ruleCategory,
+    //             sub_category: ruleSubCategory,
+    //             active: true,
+    //             path: rulePath
+    //         },
+    //         agent_ids: agentIds.map(Number), // Convert agent IDs to numbers
+    //         agent_profile_ids: profileIds.map(Number) // Convert agent IDs to numbers
+    //     };
+    //     console.log(ruleObject)
+        
+    //     const token = localStorage.getItem("access_token");
+
+    //     if (token) {
+    //         // Send a POST request to create the profile
+    //         $.ajax({
+    //             type: "POST",
+    //             url: "http://localhost:9001/rules/",
+    //             headers: {
+    //                 "Authorization": `Bearer ${token}`
+    //             },
+    //             contentType: "application/json",
+    //             data: JSON.stringify(ruleObject),
+    //             success: function (data) {
+    //                 $('.rule-success-alert').show();
+    
+    //                 setTimeout(function () {
+    //                     location.reload();
+    //                 }, 2000);
+    //             },
+    //             error: function (xhr, status, error) {
+    //                 $('.rule-fail-alert').show()
+    //             }
+    //         });
+    //     }
+    // });
+
     $("#rule-creation-form").on("submit", function (event) {
         event.preventDefault();
-
+    
         const ruleName = $("#create-rule-name").val();
-        const rule = $("#create-rule").val();
         const agentIds = getSelectedCheckboxValues('agent-checkboxes');
         const profileIds = getSelectedCheckboxValues('profile-checkboxes');
-        const ruleCategory = $("#create-category").val()
-        const ruleSubCategory = $("#create-sub-category").val()
-        const rulePath = $("#create-path").val()
-        // Create the profile object
-        const ruleObject = {
-            rule: {
-                name: ruleName,
-                exec_rule: rule,
-                category: ruleCategory,
-                sub_category: ruleSubCategory,
-                active: true,
-                path: rulePath
-            },
-            agent_ids: agentIds.map(Number), // Convert agent IDs to numbers
-            agent_profile_ids: profileIds.map(Number) // Convert agent IDs to numbers
-        };
-        console.log(ruleObject)
-        
+        const ruleCategory = $("#create-category").val();
+        const ruleSubCategory = $("#create-sub-category").val();
+        const rulePath = $("#create-path").val();
+        const yaraFile = $("#upload-yara-file").prop('files')[0]; // Get the selected YARA file
+    
+        const formData = new FormData();
+        formData.append('agent_ids', 4); // Assuming agent_ids is always 4
+        formData.append('agent_profile_ids', 0); // Assuming agent_profile_ids is always 0
+        formData.append('rule_file', yaraFile);
+        // Append query parameters to the URL
+        const url = new URL("http://localhost:9001/rules/");
+        url.searchParams.append('name', ruleName);
+        url.searchParams.append('category', ruleCategory);
+        url.searchParams.append('sub_category', ruleSubCategory);
+        url.searchParams.append('path', rulePath);
+    
         const token = localStorage.getItem("access_token");
-
+    
         if (token) {
-            // Send a POST request to create the profile
             $.ajax({
                 type: "POST",
-                url: "http://localhost:9001/rules/",
+                url: url.href, // Get the full URL with query parameters
                 headers: {
                     "Authorization": `Bearer ${token}`
                 },
-                contentType: "application/json",
-                data: JSON.stringify(ruleObject),
+                processData: false,
+                contentType: false,
+                data: formData,
                 success: function (data) {
                     $('.rule-success-alert').show();
-    
                     setTimeout(function () {
                         location.reload();
                     }, 2000);
                 },
                 error: function (xhr, status, error) {
-                    $('.rule-fail-alert').show()
+                    $('.rule-fail-alert').show();
                 }
             });
         }

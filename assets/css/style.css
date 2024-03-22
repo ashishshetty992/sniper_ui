@@ -1247,3 +1247,7 @@ h6 {
 .ping-failure td{
   background: #ff5959 !important; /* Use !important only if necessary */
 }
+
+#rulesTable_wrapper{
+  overflow-x: scroll;
+}

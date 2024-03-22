@@ -33,7 +33,22 @@
         columns: [
             { data: 'id' },
             { data: 'name' },
-            { data: 'exec_rule' },
+            { 
+                data: 'exec_rule',
+                render: function(data, type, row) {
+                    // Split the exec_rule string by commas
+                    let execRules = data.split(',');
+                    // Extract the last part of each exec_rule path
+                    let lastParts = execRules.map(function(rule) {
+                        // Split the path by slashes
+                        let parts = rule.trim().split('/');
+                        // Get the last part of the path
+                        return parts[parts.length - 1];
+                    });
+                    // Join the last parts with commas
+                    return lastParts.join(', ');
+                }
+            },
             {
                 data: null,
                 render: function (data, type, row) {
@@ -190,57 +205,114 @@
         return selectedValues;
     }
 
+    // $("#rule-creation-form").on("submit", function (event) {
+    //     event.preventDefault();
+
+    //     const ruleName = $("#create-rule-name").val();
+    //     // const rule = $("#create-rule").val();
+    //     const agentIds = getSelectedCheckboxValues('agent-checkboxes');
+    //     const profileIds = getSelectedCheckboxValues('profile-checkboxes');
+    //     const ruleCategory = $("#create-category").val()
+    //     const ruleSubCategory = $("#create-sub-category").val()
+    //     const rulePath = $("#create-path").val()
+
+    //     // Create the profile object
+    //     const ruleObject = {
+    //         rule: {
+    //             name: ruleName,
+    //             exec_rule: rule,
+    //             category: ruleCategory,
+    //             sub_category: ruleSubCategory,
+    //             active: true,
+    //             path: rulePath
+    //         },
+    //         agent_ids: agentIds.map(Number), // Convert agent IDs to numbers
+    //         agent_profile_ids: profileIds.map(Number) // Convert agent IDs to numbers
+    //     };
+    //     console.log(ruleObject)
+        
+    //     const token = localStorage.getItem("access_token");
+
+    //     if (token) {
+    //         // Send a POST request to create the profile
+    //         $.ajax({
+    //             type: "POST",
+    //             url: "http://localhost:9001/rules/",
+    //             headers: {
+    //                 "Authorization": `Bearer ${token}`
+    //             },
+    //             contentType: "application/json",
+    //             data: JSON.stringify(ruleObject),
+    //             success: function (data) {
+    //                 $('.rule-success-alert').show();
+    
+    //                 setTimeout(function () {
+    //                     location.reload();
+    //                 }, 2000);
+    //             },
+    //             error: function (xhr, status, error) {
+    //                 $('.rule-fail-alert').show()
+    //             }
+    //         });
+    //     }
+    // });
+
     $("#rule-creation-form").on("submit", function (event) {
         event.preventDefault();
-
+    
         const ruleName = $("#create-rule-name").val();
-        const rule = $("#create-rule").val();
-        const agentIds = getSelectedCheckboxValues('agent-checkboxes');
-        const profileIds = getSelectedCheckboxValues('profile-checkboxes');
-        const ruleCategory = $("#create-category").val()
-        const ruleSubCategory = $("#create-sub-category").val()
-        const rulePath = $("#create-path").val()
-        // Create the profile object
-        const ruleObject = {
-            rule: {
-                name: ruleName,
-                exec_rule: rule,
-                category: ruleCategory,
-                sub_category: ruleSubCategory,
-                active: true,
-                path: rulePath
-            },
-            agent_ids: agentIds.map(Number), // Convert agent IDs to numbers
-            agent_profile_ids: profileIds.map(Number) // Convert agent IDs to numbers
-        };
-        console.log(ruleObject)
-        
-        const token = localStorage.getItem("access_token");
+        const agentIds = getSelectedCheckboxValues('agent-checkboxes').map(Number);;
+        const profileIds = getSelectedCheckboxValues('profile-checkboxes').map(Number);;
+        const ruleCategory = $("#create-category").val();
+        const ruleSubCategory = $("#create-sub-category").val();
+        const rulePath = $("#create-path").val();
+        const yaraFiles = $("#upload-yara-file").prop('files'); // Get the selected YARA file
+        // console.log("yar file", $("#upload-yara-file").prop('files')[0])
+        // console.log("yar files", $("#upload-yara-file").prop('files'))
+    
+        const formData = new FormData();
+        agentIds.forEach(id => formData.append('agent_ids', id)); // Append each agent id individually
+        profileIds.forEach(id => formData.append('agent_profile_ids', id)); // Append each profile id individually
+        // formData.append('agent_ids', agentIds);
+        // formData.append('agent_profile_ids', profileIds); // Assuming agent_profile_ids is always 0
+        // formData.append('rule_file', yaraFile);
+        // Append query parameters to the URL
 
+        for (let i = 0; i < yaraFiles.length; i++) {
+            formData.append('rule_file', yaraFiles[i]);
+        }
+
+
+        const url = new URL("http://localhost:9001/rules/");
+        url.searchParams.append('name', ruleName);
+        url.searchParams.append('category', ruleCategory);
+        url.searchParams.append('sub_category', ruleSubCategory);
+        url.searchParams.append('path', rulePath);
+    
+        const token = localStorage.getItem("access_token");
         if (token) {
-            // Send a POST request to create the profile
             $.ajax({
                 type: "POST",
-                url: "http://localhost:9001/rules/",
+                url: url.href, // Get the full URL with query parameters
                 headers: {
                     "Authorization": `Bearer ${token}`
                 },
-                contentType: "application/json",
-                data: JSON.stringify(ruleObject),
+                processData: false,
+                contentType: false,
+                data: formData,
                 success: function (data) {
                     $('.rule-success-alert').show();
-    
                     setTimeout(function () {
                         location.reload();
                     }, 2000);
                 },
                 error: function (xhr, status, error) {
-                    $('.rule-fail-alert').show()
+                    $('.rule-fail-alert').show();
                 }
             });
         }
     });
-
+    
     $("#profile-creation-form").on("submit", function (event) {
         event.preventDefault();
 
@@ -358,8 +430,14 @@
         var ruleName = data.name;
         var ruleId = data.id;
 
+        let paths = execRuleName.split(',');
+
+        let filenames = paths.map(path => path.split('/').pop());
+
+        let filenamesStr = filenames.join(',');
+
         // Update the card title with the exec_rule name
-        $('.schedule-card .card-title').text("Schedule for "+ execRuleName);
+        $('.schedule-card .card-title').text("Schedule for "+ filenamesStr);
 
         // Update the form with the rule ID
         $('#schedule-creation-form').attr('data-rule-id', ruleId);
@@ -499,8 +577,6 @@
             agent_ids: selectedAgentIds,
             agent_profile_ids: selectedProfileIds
         };
-
-        debugger
 
         const token = localStorage.getItem("access_token");
         if (token) {
