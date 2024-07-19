@@ -14,7 +14,7 @@
 
     table =  $('#agent-table').DataTable({
         ajax: {
-            url: 'http://localhost:9001/allagentprofiles/',
+            url: 'http://13.232.50.69:9001/allagentprofiles/',
             headers: {
                 "Authorization": `Bearer ${token}`
             },
@@ -93,7 +93,7 @@
             // Send a POST request to create the agent
             $.ajax({
                 type: "POST",
-                url: "http://localhost:9001/agents/",
+                url: "http://13.232.50.69:9001/agents/",
                 headers: {
                     "Authorization": `Bearer ${token}`
                 },
@@ -119,7 +119,7 @@
         // Make a GET request to fetch agents
         $.ajax({
             type: "GET",
-            url: "http://localhost:9001/agents/",
+            url: "http://13.232.50.69:9001/agents/",
             dataType: "json",
             headers: {
                 "Authorization": `Bearer ${token}`
@@ -158,7 +158,7 @@
         // Make a GET request to fetch profiles
         $.ajax({
             type: "GET",
-            url: "http://localhost:9001/agentprofiles/",
+            url: "http://13.232.50.69:9001/agentprofiles/",
             dataType: "json",
             headers: {
                 "Authorization": `Bearer ${token}`
@@ -266,7 +266,7 @@
         formData.append('agent_profile_ids', 0); // Assuming agent_profile_ids is always 0
         formData.append('rule_file', yaraFile);
         // Append query parameters to the URL
-        const url = new URL("http://localhost:9001/rules/");
+        const url = new URL("http://13.232.50.69:9001/rules/");
         url.searchParams.append('name', ruleName);
         url.searchParams.append('category', ruleCategory);
         url.searchParams.append('sub_category', ruleSubCategory);
@@ -318,7 +318,7 @@
             // Send a POST request to create the profile
             $.ajax({
                 type: "POST",
-                url: "http://localhost:9001/agentprofiles/",
+                url: "http://13.232.50.69:9001/agentprofiles/",
                 headers: {
                     "Authorization": `Bearer ${token}`
                 },
@@ -355,7 +355,7 @@
 
         $.ajax({
             type: 'POST',
-            url: 'http://localhost:9001/schedule/rule-run',
+            url: 'http://13.232.50.69:9001/schedule/rule-run',
             contentType: 'application/json',
             headers: {
                     "Authorization": `Bearer ${token}`
@@ -415,7 +415,7 @@
         // Show a loading animation on the selected row
         $.ajax({
             type: "POST",
-            url: "http://localhost:9001/heartbeatcheck/",
+            url: "http://13.232.50.69:9001/heartbeatcheck/",
             contentType: "application/json",
             data: data_json,
             success: function (data) {

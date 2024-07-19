@@ -6,7 +6,7 @@
     $("#login-form").on("submit", function (event) {
         event.preventDefault();
 
-        const loginUrl = "http://127.0.0.1:9001/token"; // Replace with your API endpoint
+        const loginUrl = "http://13.232.50.69:9001/token"; // Replace with your API endpoint
 
         const username = $("#username").val();
         const password = $("#password").val();
