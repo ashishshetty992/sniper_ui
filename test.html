@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intro.js Tour Example</title>
+  <script src="assets/vendor/jquery.min.js"></script>
+    <style>
+        #header, #sidebar, #rulesTable {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div id="header" data-intro="This is the main header of the dashboard.">
+        Header Content
+    </div>
+    <div id="sidebar" data-intro="The sidebar contains the navigation menu.">
+        Sidebar Content
+    </div>
+    <table id="rulesTable" data-intro="This table displays a list of rules.">
+        <tr><td>Rule 1</td></tr>
+        <tr><td>Rule 2</td></tr>
+    </table>
+    
+    <button id="startTour">Start Tour</button>
+
+    <script>
+        $(document).ready(function() {
+                introJs().start();
+        });
+    </script>
+</body>
+</html>

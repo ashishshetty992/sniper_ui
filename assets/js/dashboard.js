@@ -24,7 +24,7 @@
     }
     var table = $('#rulesTable').DataTable({
         ajax: {
-            url: 'http://13.232.50.69:9001/get_rules_with_agents_and_profile/',
+            url: 'http://localhost:9001/get_rules_with_agents_and_profile/',
             headers: {
                         "Authorization": `Bearer ${token}`
                     },
@@ -99,7 +99,7 @@
             // Send a POST request to create the agent
             $.ajax({
                 type: "POST",
-                url: "http://13.232.50.69:9001/agents/",
+                url: "http://localhost:9001/agents/",
                 headers: {
                     "Authorization": `Bearer ${token}`
                 },
@@ -125,7 +125,7 @@
         // Make a GET request to fetch agents
         $.ajax({
             type: "GET",
-            url: "http://13.232.50.69:9001/agents/",
+            url: "http://localhost:9001/agents/",
             dataType: "json",
             headers: {
                 "Authorization": `Bearer ${token}`
@@ -164,7 +164,7 @@
         // Make a GET request to fetch profiles
         $.ajax({
             type: "GET",
-            url: "http://13.232.50.69:9001/agentprofiles/",
+            url: "http://localhost:9001/agentprofiles/",
             dataType: "json",
             headers: {
                 "Authorization": `Bearer ${token}`
@@ -283,7 +283,7 @@
         }
 
 
-        const url = new URL("http://13.232.50.69:9001/rules/");
+        const url = new URL("http://localhost:9001/rules/");
         url.searchParams.append('name', ruleName);
         url.searchParams.append('category', ruleCategory);
         url.searchParams.append('sub_category', ruleSubCategory);
@@ -334,7 +334,7 @@
             // Send a POST request to create the profile
             $.ajax({
                 type: "POST",
-                url: "http://13.232.50.69:9001/agentprofiles/",
+                url: "http://localhost:9001/agentprofiles/",
                 headers: {
                     "Authorization": `Bearer ${token}`
                 },
@@ -462,7 +462,7 @@
 
         $.ajax({
             type: 'POST',
-            url: 'http://13.232.50.69:9001/schedule/rule-run',
+            url: 'http://localhost:9001/schedule/rule-run',
             contentType: 'application/json',
             headers: {
                     "Authorization": `Bearer ${token}`
@@ -511,7 +511,7 @@
     
         $.ajax({
             type: "GET",
-            url: `http://13.232.50.69:9001/get_rules_with_agents_and_profile_by_rule_id/${ruleId}`,
+            url: `http://localhost:9001/get_rules_with_agents_and_profile_by_rule_id/${ruleId}`,
             headers: {
                 "Authorization": `Bearer ${token}`
             },
@@ -583,7 +583,7 @@
             // Send a PUT request to update the rule
             $.ajax({
                 type: "PUT",
-                url: `http://13.232.50.69:9001/rules/${ruleId}`,
+                url: `http://localhost:9001/rules/${ruleId}`,
                 headers: {
                     "Authorization": `Bearer ${token}`
                 },

@@ -9,7 +9,7 @@
   
     var table = $('#resultTable').DataTable({
       "ajax": {
-        "url": "http://13.232.50.69:9001/rule-execution-results?skip=0&limit=1000",
+        "url": "http://localhost:9001/rule-execution-results?skip=0&limit=1000",
         "dataSrc": ""
       },
       "columns": [

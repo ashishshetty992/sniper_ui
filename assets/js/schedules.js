@@ -9,7 +9,7 @@
   
     var table = $('#scheduleTable').DataTable({
         "ajax": {
-            "url": "http://13.232.50.69:9001/schedules?skip=0&limit=1000",
+            "url": "http://localhost:9001/schedules?skip=0&limit=1000",
             "dataSrc": ""
         },
         "columns": [

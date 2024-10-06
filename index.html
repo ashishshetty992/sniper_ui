@@ -41,7 +41,7 @@
 <body>
 
   <!-- ======= Header ======= -->
-  <header id="header" class="header fixed-top d-flex align-items-center">
+<header id="header-tour" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
       <a href="index.html" class="logo d-flex align-items-center">
@@ -49,27 +49,19 @@
         <span class="d-none d-lg-block">SNIPER</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
-    </div><!-- End Logo -->
-
-
-
-    <nav class="header-nav ms-auto">
+    </div><nav class="header-nav ms-auto">
       <ul class="d-flex align-items-center">
 
         <li class="nav-item d-block d-lg-none">
           <a class="nav-link nav-icon search-bar-toggle " href="#">
             <i class="bi bi-search"></i>
           </a>
-        </li><!-- End Search Icon-->
-
-        <li class="nav-item dropdown">
+        </li><li class="nav-item dropdown" id="notification-dropdown">
 
           <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
             <i class="bi bi-bell"></i>
             <span class="badge bg-primary badge-number">4</span>
-          </a><!-- End Notification Icon -->
-
-          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
+          </a><ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
             <li class="dropdown-header">
               You have 4 new notifications
               <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
@@ -133,18 +125,12 @@
               <a href="#">Show all notifications</a>
             </li>
 
-          </ul><!-- End Notification Dropdown Items -->
-
-        </li><!-- End Notification Nav -->
-
-        <li class="nav-item dropdown">
+          </ul></li><li class="nav-item dropdown" id="messages-dropdown">
 
           <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
             <i class="bi bi-chat-left-text"></i>
             <span class="badge bg-success badge-number">3</span>
-          </a><!-- End Messages Icon -->
-
-          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
+          </a><ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
             <li class="dropdown-header">
               You have 3 new messages
               <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
@@ -199,18 +185,12 @@
               <a href="#">Show all messages</a>
             </li>
 
-          </ul><!-- End Messages Dropdown Items -->
-
-        </li><!-- End Messages Nav -->
-
-        <li class="nav-item dropdown pe-3">
+          </ul></li><li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
             <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
             <span class="d-none d-md-block dropdown-toggle ps-2">Admin</span>
-          </a><!-- End Profile Iamge Icon -->
-
-          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+          </a><ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
               <h6>Admin</h6>
               <span>Cyber Security</span>
@@ -251,85 +231,68 @@
   </a>
 </li>
 
-          </ul><!-- End Profile Dropdown Items -->
-        </li><!-- End Profile Nav -->
-
-      </ul>
-    </nav><!-- End Icons Navigation -->
-
-  </header><!-- End Header -->
+          </ul></li></ul>
+    </nav></header>
 
   <!-- ======= Sidebar ======= -->
-  <aside id="sidebar" class="sidebar">
+  <aside id="sidebar" class="sidebar" data-intro="This is the main sidebar where you can navigate to different sections of the app." data-step="1">
 
     <ul class="sidebar-nav" id="sidebar-nav">
-
+  
       <li class="nav-item">
-        <a class="nav-link " href="index.html">
+        <a class="nav-link" href="index.html" data-intro="Go to the Dashboard to view key information." data-step="2">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
       </li><!-- End Dashboard Nav -->
-
+  
       <li class="nav-item">
-        <a class="nav-link " href="agents.html">
+        <a class="nav-link" href="agents.html" data-intro="View the list of agents here." data-step="3">
           <i class="bi bi-grid"></i>
           <span>Agents</span>
         </a>
       </li>
-
+  
       <li class="nav-item">
-        <a class="nav-link " href="agent_profile.html">
+        <a class="nav-link" href="agent_profile.html" data-intro="View agent profiles." data-step="4">
           <i class="bi bi-grid"></i>
           <span>Agent Profile</span>
         </a>
       </li>
-
+  
       <li class="nav-item">
-        <a class="nav-link " href="results.html">
+        <a class="nav-link" href="results.html" data-intro="Check the results page for insights." data-step="5">
           <i class="bi bi-grid"></i>
           <span>Results</span>
         </a>
       </li>
-
+  
       <li class="nav-item">
-        <a class="nav-link " href="schedulers.html">
+        <a class="nav-link" href="schedulers.html" data-intro="Access the scheduler to manage tasks." data-step="6">
           <i class="bi bi-grid"></i>
           <span>Scheduler</span>
         </a>
       </li>
-      
-      <!-- End Dashboard Nav -->
-
-      <li class="nav-heading">Pages</li>
-
+  
+      <li class="nav-heading" data-intro="Navigate to different pages from here." data-step="7">Pages</li>
+  
       <li class="nav-item">
-        <a class="nav-link collapsed" href="users-profile.html">
+        <a class="nav-link collapsed" href="users-profile.html" data-intro="Access your user profile here." data-step="8">
           <i class="bi bi-person"></i>
           <span>Profile</span>
         </a>
       </li><!-- End Profile Page Nav -->
-
-
-
-
-
-
-
+  
       <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-login.html">
+        <a class="nav-link collapsed" href="pages-login.html" data-intro="Click here to log in." data-step="9">
           <i class="bi bi-box-arrow-in-right"></i>
           <span>Login</span>
         </a>
       </li><!-- End Login Page Nav -->
-
-
-
-
-
+  
     </ul>
-
-  </aside><!-- End Sidebar-->
+  
+  </aside><!-- End Sidebar -->
 
   <main id="main" class="main">
 
@@ -514,7 +477,7 @@
 
           <!-- Recent Activity -->
 
-          <button type="button" class="btn btn-primary create-entity-button" data-bs-toggle="tooltip" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Create Rules | Agents | Profiles" aria-label="Create" style="margin: 2%;">Create Entities</button>
+          <button type="button" class="btn btn-primary create-entity-button"   data-bs-placement="top" data-bs-original-title="Create Rules | Agents | Profiles" aria-label="Create" style="margin: 2%;" data-intro="Click here to create Agents | Rules | Profiles">Create Entities</button>
           <br>
             <div class="card card-create-entities">
               <div class="card-body">
@@ -718,7 +681,7 @@
 
                 document.addEventListener("DOMContentLoaded", () => {
                 $.ajax({
-                    url: 'http://13.232.50.69:9001/get_analytics_data/',
+                    url: 'http://localhost:9001/get_analytics_data/',
                     type: 'GET',
                     headers: {
                         'accept': 'application/json',
@@ -791,7 +754,37 @@
                         }]
                     });
                   }
-              });
+                
+                // Get the number of times the tour has been shown
+                let tourShownCount = localStorage.getItem('tourShownCount') || 0;
+
+                // Convert to number
+                tourShownCount = parseInt(tourShownCount, 10);
+
+                // Only show the tour if it has been shown less than 3 times
+                if (tourShownCount < 3) {
+                  
+                  // Initialize introJs instance
+                  const intro = introJs();
+
+                  // Set the oncomplete callback
+                  intro.oncomplete(function() {
+                    // Increment the count when the tour is completed
+                    localStorage.setItem('tourShownCount', tourShownCount + 1);
+                  });
+
+                  // Set the onexit callback
+                  intro.onexit(function() {
+                    // Increment the count when the tour is exited
+                    localStorage.setItem('tourShownCount', tourShownCount + 1);
+                  });
+
+                  // Start the tour
+                  intro.start();
+                }
+              
+                });
+
 
               </script>
 
@@ -832,6 +825,8 @@
   <script src="assets/vendor/php-email-form/validate.js"></script>
   <script src="assets/vendor/jquery.min.js"></script>
   <script src="assets/vendor/datatable.min.js"></script>
+  <link rel="stylesheet" href="/assets/css/intro.min.css">
+  <script src="assets/vendor/intro.min.js"></script>
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
