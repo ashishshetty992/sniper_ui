@@ -1,0 +1,416 @@
+[
+  {
+    "file_name": null,
+    "scanned_file": null,
+    "severity": null,
+    "latency": null,
+    "updated_at": null,
+    "status": "failed",
+    "id": 1,
+    "rule_name": null,
+    "details": "Failed to copy file to server with error : Failure",
+    "created_at": "2024-11-11T18:32:01",
+    "rule": [],
+    "schedule": [],
+    "agent": []
+  },
+  {
+    "file_name": null,
+    "scanned_file": null,
+    "severity": null,
+    "latency": null,
+    "updated_at": null,
+    "status": "failed",
+    "id": 2,
+    "rule_name": null,
+    "details": "Failed to copy file to server with error : Failure",
+    "created_at": "2024-11-11T18:32:01",
+    "rule": [],
+    "schedule": [],
+    "agent": []
+  },
+  {
+    "file_name": null,
+    "scanned_file": null,
+    "severity": null,
+    "latency": null,
+    "updated_at": null,
+    "status": "failed",
+    "id": 3,
+    "rule_name": null,
+    "details": "Failed to copy file to server with error : Failure",
+    "created_at": "2024-11-11T18:32:01",
+    "rule": [],
+    "schedule": [],
+    "agent": []
+  },
+  {
+    "file_name": null,
+    "scanned_file": null,
+    "severity": null,
+    "latency": null,
+    "updated_at": null,
+    "status": "failed",
+    "id": 4,
+    "rule_name": null,
+    "details": "'yara' is not recognized as an internal or external command,\r\noperable program or batch file.\r\n",
+    "created_at": "2024-11-11T18:32:01",
+    "rule": [],
+    "schedule": [],
+    "agent": []
+  },
+  {
+    "file_name": null,
+    "scanned_file": null,
+    "severity": null,
+    "latency": null,
+    "updated_at": null,
+    "status": "failed",
+    "id": 5,
+    "rule_name": null,
+    "details": "C:\\ProgramData\\rules\\Rule.yar(18): error: duplicated identifier \"Pafish\"\r\n",
+    "created_at": "2024-11-12T18:32:01",
+    "rule": [],
+    "schedule": [],
+    "agent": []
+  },
+  {
+    "file_name": null,
+    "scanned_file": null,
+    "severity": null,
+    "latency": null,
+    "updated_at": null,
+    "status": "failed",
+    "id": 6,
+    "rule_name": null,
+    "details": "C:\\ProgramData\\rules\\Rule.yar(18): error: duplicated identifier \"Pafish\"\r\n",
+    "created_at": "2024-11-12T18:32:01",
+    "rule": [],
+    "schedule": [],
+    "agent": []
+  },
+  {
+    "file_name": null,
+    "scanned_file": null,
+    "severity": null,
+    "latency": null,
+    "updated_at": null,
+    "status": "failed",
+    "id": 7,
+    "rule_name": null,
+    "details": "C:\\ProgramData\\rules\\Rule.yar(18): error: duplicated identifier \"Pafish\"\r\n",
+    "created_at": "2024-11-12T18:32:01",
+    "rule": [],
+    "schedule": [],
+    "agent": []
+  },
+  {
+    "file_name": null,
+    "scanned_file": null,
+    "severity": null,
+    "latency": null,
+    "updated_at": null,
+    "status": "failed",
+    "id": 8,
+    "rule_name": null,
+    "details": "C:\\ProgramData\\rules\\Rule.yar(18): error: duplicated identifier \"Pafish\"\r\n",
+    "created_at": "2024-11-12T18:32:01",
+    "rule": [],
+    "schedule": [],
+    "agent": []
+  },
+  {
+    "file_name": null,
+    "scanned_file": null,
+    "severity": null,
+    "latency": null,
+    "updated_at": null,
+    "status": "failed",
+    "id": 9,
+    "rule_name": null,
+    "details": "error scanning C:\" : could not open file\r\n",
+    "created_at": "2024-11-12T18:55:01",
+    "rule": [],
+    "schedule": [],
+    "agent": []
+  },
+  {
+    "file_name": null,
+    "scanned_file": null,
+    "severity": null,
+    "latency": null,
+    "updated_at": null,
+    "status": "failed",
+    "id": 10,
+    "rule_name": null,
+    "details": "C:\\ProgramData\\rules\\Rule.yar(18): error: duplicated identifier \"Pafish\"\r\n",
+    "created_at": "2024-11-12T18:55:01",
+    "rule": [],
+    "schedule": [],
+    "agent": []
+  },
+  {
+    "file_name": null,
+    "scanned_file": null,
+    "severity": null,
+    "latency": null,
+    "updated_at": null,
+    "status": "failed",
+    "id": 11,
+    "rule_name": null,
+    "details": "error scanning C:\" : could not open file\r\n",
+    "created_at": "2024-11-12T19:03:01",
+    "rule": [],
+    "schedule": [],
+    "agent": []
+  },
+  {
+    "file_name": null,
+    "scanned_file": null,
+    "severity": null,
+    "latency": null,
+    "updated_at": null,
+    "status": "failed",
+    "id": 12,
+    "rule_name": null,
+    "details": "error scanning C:\" : could not open file\r\n",
+    "created_at": "2024-11-12T19:03:01",
+    "rule": [],
+    "schedule": [],
+    "agent": []
+  },
+  {
+    "file_name": null,
+    "scanned_file": null,
+    "severity": null,
+    "latency": null,
+    "updated_at": null,
+    "status": "failed",
+    "id": 13,
+    "rule_name": null,
+    "details": "error scanning C:\" : could not open file\r\n",
+    "created_at": "2024-11-12T19:03:01",
+    "rule": [],
+    "schedule": [],
+    "agent": []
+  },
+  {
+    "file_name": null,
+    "scanned_file": null,
+    "severity": null,
+    "latency": null,
+    "updated_at": null,
+    "status": "failed",
+    "id": 14,
+    "rule_name": null,
+    "details": "error scanning C:\" : could not open file\r\n",
+    "created_at": "2024-11-12T19:03:01",
+    "rule": [],
+    "schedule": [],
+    "agent": []
+  },
+  {
+    "file_name": null,
+    "scanned_file": null,
+    "severity": null,
+    "latency": null,
+    "updated_at": null,
+    "status": "failed",
+    "id": 15,
+    "rule_name": null,
+    "details": "error scanning C:\\Users\\anmoh\\Downloads\" : could not open file\r\n",
+    "created_at": "2024-11-12T20:58:01",
+    "rule": [
+      {
+        "id": 5,
+        "path": "C:\\Users\\anmoh\\Downloads\\",
+        "sub_category": "test rule sub category 5",
+        "created_at": "2024-11-12T20:18:24",
+        "updated_at": null,
+        "name": "test 5",
+        "exec_rule": "/app/app/setup/files/test.yar",
+        "category": "test rule category 5",
+        "active": true
+      }
+    ],
+    "schedule": [
+      {
+        "id": 8,
+        "minutes": 5,
+        "frequency": "daily",
+        "reference_id": "5",
+        "result": null,
+        "updated_at": "2024-11-12T22:05:01",
+        "start_date": "2024-11-12",
+        "hour": 22,
+        "reference": "rule",
+        "status": "executed",
+        "created_at": "2024-11-12T20:18:50"
+      }
+    ],
+    "agent": [
+      {
+        "id": 1,
+        "name": "anmoh",
+        "active": true,
+        "updated_at": null,
+        "agent_name": "anmoh",
+        "ip_address": "192.168.2.34",
+        "created_at": "2024-11-11T16:14:50"
+      }
+    ]
+  },
+  {
+    "file_name": null,
+    "scanned_file": null,
+    "severity": null,
+    "latency": null,
+    "updated_at": null,
+    "status": "failed",
+    "id": 16,
+    "rule_name": null,
+    "details": "",
+    "created_at": "2024-11-12T21:39:01",
+    "rule": [
+      {
+        "id": 5,
+        "path": "C:\\Users\\anmoh\\Downloads\\",
+        "sub_category": "test rule sub category 5",
+        "created_at": "2024-11-12T20:18:24",
+        "updated_at": null,
+        "name": "test 5",
+        "exec_rule": "/app/app/setup/files/test.yar",
+        "category": "test rule category 5",
+        "active": true
+      }
+    ],
+    "schedule": [
+      {
+        "id": 8,
+        "minutes": 5,
+        "frequency": "daily",
+        "reference_id": "5",
+        "result": null,
+        "updated_at": "2024-11-12T22:05:01",
+        "start_date": "2024-11-12",
+        "hour": 22,
+        "reference": "rule",
+        "status": "executed",
+        "created_at": "2024-11-12T20:18:50"
+      }
+    ],
+    "agent": [
+      {
+        "id": 1,
+        "name": "anmoh",
+        "active": true,
+        "updated_at": null,
+        "agent_name": "anmoh",
+        "ip_address": "192.168.2.34",
+        "created_at": "2024-11-11T16:14:50"
+      }
+    ]
+  },
+  {
+    "file_name": null,
+    "scanned_file": null,
+    "severity": null,
+    "latency": null,
+    "updated_at": null,
+    "status": "failed",
+    "id": 17,
+    "rule_name": null,
+    "details": "error scanning C:\\Users\\anmoh\\Downloads\" : could not open file\r\n",
+    "created_at": "2024-11-12T21:49:01",
+    "rule": [
+      {
+        "id": 5,
+        "path": "C:\\Users\\anmoh\\Downloads\\",
+        "sub_category": "test rule sub category 5",
+        "created_at": "2024-11-12T20:18:24",
+        "updated_at": null,
+        "name": "test 5",
+        "exec_rule": "/app/app/setup/files/test.yar",
+        "category": "test rule category 5",
+        "active": true
+      }
+    ],
+    "schedule": [
+      {
+        "id": 8,
+        "minutes": 5,
+        "frequency": "daily",
+        "reference_id": "5",
+        "result": null,
+        "updated_at": "2024-11-12T22:05:01",
+        "start_date": "2024-11-12",
+        "hour": 22,
+        "reference": "rule",
+        "status": "executed",
+        "created_at": "2024-11-12T20:18:50"
+      }
+    ],
+    "agent": [
+      {
+        "id": 1,
+        "name": "anmoh",
+        "active": true,
+        "updated_at": null,
+        "agent_name": "anmoh",
+        "ip_address": "192.168.2.34",
+        "created_at": "2024-11-11T16:14:50"
+      }
+    ]
+  },
+  {
+    "file_name": "/app/app/setup/files/test.yar",
+    "scanned_file": "C:\\Users\\anmoh\\Downloads\\\\test_spam.txt",
+    "severity": "low",
+    "latency": 1,
+    "updated_at": null,
+    "status": "success",
+    "id": 18,
+    "rule_name": "Detect_Keyword_Spam",
+    "details": "Detect_Keyword_Spam [description=\"Detects spam keywords\",author=\"Bard\",severity=\"low\"] C:\\Users\\anmoh\\Downloads\\\\test_spam.txt",
+    "created_at": "2024-11-12T22:05:01",
+    "rule": [
+      {
+        "id": 5,
+        "path": "C:\\Users\\anmoh\\Downloads\\",
+        "sub_category": "test rule sub category 5",
+        "created_at": "2024-11-12T20:18:24",
+        "updated_at": null,
+        "name": "test 5",
+        "exec_rule": "/app/app/setup/files/test.yar",
+        "category": "test rule category 5",
+        "active": true
+      }
+    ],
+    "schedule": [
+      {
+        "id": 8,
+        "minutes": 5,
+        "frequency": "daily",
+        "reference_id": "5",
+        "result": null,
+        "updated_at": "2024-11-12T22:05:01",
+        "start_date": "2024-11-12",
+        "hour": 22,
+        "reference": "rule",
+        "status": "executed",
+        "created_at": "2024-11-12T20:18:50"
+      }
+    ],
+    "agent": [
+      {
+        "id": 1,
+        "name": "anmoh",
+        "active": true,
+        "updated_at": null,
+        "agent_name": "anmoh",
+        "ip_address": "192.168.2.34",
+        "created_at": "2024-11-11T16:14:50"
+      }
+    ]
+  }
+]
