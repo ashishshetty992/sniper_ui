@@ -21,6 +21,17 @@
         }
       },
       {
+        "data": "agent",
+        "render": function(data) {
+          if (!data || !Array.isArray(data) || data.length === 0) {
+            return '<span class="badge bg-secondary">No Agent</span>';
+          }
+          return data.map(function(agent) {
+            return agent.ip_address || 'Unknown IP';
+          }).join(', ');
+        }
+      },
+      {
         "data": "status",
         "render": function (data, type, row) {
           if (type === 'display') {
@@ -32,36 +43,6 @@
               : '<span class="badge bg-danger">Failed</span>';
           }
           return data;
-        }
-      },
-      {
-        "data": "file_name",
-        "render": function(data) {
-          return data || '<span class="badge bg-warning text-dark">No File</span>';
-        }
-      },
-      {
-        "data": "scanned_file",
-        "render": function(data) {
-          return data || '<span class="badge bg-warning text-dark">Not Scanned</span>';
-        }
-      },
-      {
-        "data": "severity",
-        "render": function(data) {
-          if (data === null) return '<span class="badge bg-secondary">Not Rated</span>';
-          const severityClasses = {
-            'low': 'bg-info',
-            'medium': 'bg-warning text-dark',
-            'high': 'bg-danger'
-          };
-          return `<span class="badge ${severityClasses[data.toLowerCase()] || 'bg-secondary'}">${data}</span>`;
-        }
-      },
-      {
-        "data": "details",
-        "render": function(data) {
-          return data || '<span class="text-muted"><i class="bi bi-info-circle"></i> No Details Available</span>';
         }
       },
       {
@@ -86,18 +67,37 @@
         }
       },
       {
-        "data": "agent",
+        "data": "rule_name",
         "render": function(data) {
-          if (!data || !Array.isArray(data) || data.length === 0) {
-            return '<span class="badge bg-secondary">No Agent</span>';
-          }
-          return data.map(function(agent) {
-            return agent.agent_name || 'Unnamed Agent';
-          }).join(', ');
+          return data || '<span class="badge bg-warning text-dark">No Rule</span>';
+        }
+      },
+      {
+        "data": "details",
+        "render": function(data) {
+          return data || '<span class="text-muted"><i class="bi bi-info-circle"></i> No Details Available</span>';
+        }
+      },
+      {
+        "data": "severity",
+        "render": function(data) {
+          if (data === null) return '<span class="badge bg-secondary">Not Rated</span>';
+          const severityClasses = {
+            'low': 'bg-info',
+            'medium': 'bg-warning text-dark',
+            'high': 'bg-danger'
+          };
+          return `<span class="badge ${severityClasses[data.toLowerCase()] || 'bg-secondary'}">${data}</span>`;
+        }
+      },
+      {
+        "data": "scanned_file",
+        "render": function(data) {
+          return data || '<span class="badge bg-warning text-dark">Not Scanned</span>';
         }
       }
     ],
-    "order": [[6, "desc"]], // Sort by created_at by default
+    "order": [[3, "desc"]], // Sort by created_at by default
     "pageLength": 10,
     "responsive": true,
     "scrollCollapse": true,
@@ -149,6 +149,11 @@
       "emptyTable": '<div class="text-center text-muted"><i class="bi bi-inbox-fill fs-2"></i><br>No data available</div>'
     }
   });
+
+  // Refresh table every 30 seconds
+  setInterval(function() {
+    table.ajax.reload(null, false);
+  }, 30000);
 
   // Adjust columns on window resize
   $(window).on('resize', function() {
