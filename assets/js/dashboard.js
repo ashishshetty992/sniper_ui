@@ -61,6 +61,12 @@
             {
                 data: 'id', // Assuming you have some unique identifier for scheduling
                 render: function (data) {
+                    return '<button class="btn btn-secondary scan-now-btn btn-info" data-id="' + data + '"><i class="bi bi-play"></i></button>';
+                }
+            },
+            {
+                data: 'id', // Assuming you have some unique identifier for scheduling
+                render: function (data) {
                     return '<button class="btn btn-secondary schedule-btn btn-info" data-id="' + data + '"><i class="bi bi-calendar"></i></button>';
                 }
             },
@@ -603,4 +609,132 @@
         }
     });
 
+    $('#rulesTable tbody').on('click', '.scan-now-btn', function() {
+        const ruleId = $(this).data('id');
+        const row = table.row($(this).closest('tr'));
+        const rowData = row.data();
+        
+        // Show confirmation dialog
+        if (!confirm('Are you sure you want to run this scan now?')) {
+            return;
+        }
+        
+        // Disable the button and show loading state
+        const $button = $(this);
+        $button.prop('disabled', true)
+               .html('<i class="bi bi-hourglass-split"></i>');
+        
+        // Make API call to start the scan
+        $.ajax({
+            url: `http://localhost:9001/rules/${ruleId}/scan`,
+            method: 'POST',
+            headers: {
+                "Authorization": `Bearer ${token}`
+            },
+            contentType: 'application/json',
+            success: function(response) {
+                // Process execution results
+                let resultDetails = '';
+                let hasErrors = false;
+                let totalMatches = 0;
+                let totalFilesScanned = 0;
+                
+                response.execution_results.forEach(result => {
+                    const status = result.status === 'success' 
+                        ? '<span class="badge bg-success">Success</span>' 
+                        : '<span class="badge bg-danger">Failed</span>';
+                    
+                    let details = '';
+                    if (result.status === 'success') {
+                        totalMatches += result.matches ? result.matches.length : 0;
+                        totalFilesScanned += result.files_scanned || 0;
+                        
+                        details = `
+                            <small class="d-block text-muted">
+                                Files Scanned: ${result.files_scanned || 0}
+                                ${result.matches ? `<br>Matches Found: ${result.matches.length}` : ''}
+                                ${result.scan_time ? `<br>Scan Time: ${result.scan_time}s` : ''}
+                            </small>`;
+                    } else {
+                        details = `<small class="text-danger d-block">${result.error}</small>`;
+                        hasErrors = true;
+                    }
+                    
+                    resultDetails += `
+                        <div class="mb-3">
+                            <div class="d-flex align-items-center mb-1">
+                                <strong class="me-2">Agent ${result.agent_name}:</strong> ${status}
+                            </div>
+                            ${details}
+                        </div>`;
+                });
+
+                // Show toast with results
+                const toast = `
+                    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+                        <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true" style="min-width: 350px;">
+                            <div class="toast-header ${hasErrors ? 'bg-warning' : 'bg-success'} text-white">
+                                <i class="bi ${hasErrors ? 'bi-exclamation-triangle' : 'bi-check-circle'} me-2"></i>
+                                <strong class="me-auto">Scan Results</strong>
+                                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                            </div>
+                            <div class="toast-body">
+                                <h6 class="mb-3">Rule: ${response.rule_name}</h6>
+                                ${!hasErrors ? `
+                                    <div class="alert alert-light mb-3">
+                                        <small>
+                                            Total Files Scanned: ${totalFilesScanned}<br>
+                                            Total Matches Found: ${totalMatches}
+                                        </small>
+                                    </div>
+                                ` : ''}
+                                ${resultDetails}
+                                <div class="mt-2 pt-2 border-top">
+                                    <a href="results.html" class="btn btn-sm btn-primary">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>`;
+                
+                // Add toast to body and auto-remove after 8 seconds
+                $(toast).appendTo('body');
+                setTimeout(() => {
+                    $('.toast').toast('hide');
+                }, 8000);
+                
+                // Re-enable button after delay
+                setTimeout(() => {
+                    $button.prop('disabled', false)
+                           .html('<i class="bi bi-play"></i>');
+                }, 2000);
+            },
+            error: function(xhr, status, error) {
+                // Show error toast
+                const toast = `
+                    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+                        <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+                            <div class="toast-header bg-danger text-white">
+                                <i class="bi bi-exclamation-circle me-2"></i>
+                                <strong class="me-auto">Error</strong>
+                                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                            </div>
+                            <div class="toast-body">
+                                <div class="mb-2">Failed to start scan:</div>
+                                <small class="text-danger">${error}</small>
+                            </div>
+                        </div>
+                    </div>`;
+                
+                // Add toast to body and auto-remove after 5 seconds
+                $(toast).appendTo('body');
+                setTimeout(() => {
+                    $('.toast').toast('hide');
+                }, 5000);
+                
+                // Re-enable button
+                $button.prop('disabled', false)
+                       .html('<i class="bi bi-play"></i>');
+            }
+        });
+    });
 })();
